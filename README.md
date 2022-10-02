@@ -1,4 +1,4 @@
-# RW-Shogun-Warfare
+# RW-Shogun-Warfare (PRIVATE)
 ###### A Samurai Warfare Mod for Rusted Warfare by: Satobi46
 
 > **do not repost the mod from other sources without permission from me.**
