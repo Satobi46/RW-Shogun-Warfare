@@ -1,0 +1,7 @@
+[mod]
+title: Shogun Warfare
+description: Shogun Warfare! by: SatobiS
+minVersion: 1.15p9
+
+
+

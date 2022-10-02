@@ -1,0 +1,28 @@
+
+[core]
+@copyFromSection: template_voice2
+class: CustomUnitMetadata
+copyFrom: effects.template, voices.template
+mass: 1000
+tags: aircraft, airUnit
+explodeOnDeath: false
+explodeOnDeathGroundCollision: false
+fogOfWarSightRange:6
+
+[graphics]
+drawLayer: air
+disableLowHpFire: true
+disableLowHpSmoke: true
+
+[movement]
+movementType: AIR
+moveSpeed: 2
+moveAccelerationSpeed: 0.05
+moveDecelerationSpeed: 0.05
+slowDeathFall: true
+targetHeight: 50
+maxTurnSpeed: 2.0
+turnAcceleration: 2
+moveSlidingMode :false
+moveIgnoringBody:false
+reverseSpeedPercentage: 0

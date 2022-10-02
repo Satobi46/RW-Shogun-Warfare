@@ -1,0 +1,14 @@
+[core]
+@copyFromSection: template_voice1
+copyFrom: voices.template, effects.template
+explodeOnDeath: false
+explodeOnDeathGroundCollision: false
+tags: haevyVehicle, vehicle
+transportSlotsNeeded:2
+fogOfWarSightRange:6
+mass: 1600
+
+[graphics]
+drawLayer: ground2
+disableLowHpFire: true
+disableLowHpSmoke: true
