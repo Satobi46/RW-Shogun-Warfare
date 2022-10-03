@@ -5,19 +5,26 @@ strictLevel: 0
 image_shield: ROOT:images\noshield.png
 #image_shield: NONE
 
-[arm_1]
-x: 0
-y: 0
-image_end: ROOT:images\buildingshield.png
-drawUnderAllUnits: true
-spinRate: 0.5
+#[arm_1]
+#x: 0
+#y: 0
+#image_end: ROOT:images\buildingshield.png
+#drawUnderAllUnits: true
+#spinRate: 0.5
 
-[animation_IDLE]
-#onActions: idle
+[decal_circle]
+basePosition: self.getOffsetRelative(diroffset=self.timeAlive()*50)
+imageStack: ROOT:images\buildingshield.png*1
+imageScale: 2
+frame_width: 32
+frame_height: 32
+layer: afterBody
+teamColors: true
+#onlyWhenSelectedByAnyPlayer: true
 
 [decal_selection]
 imageStack: ROOT:images\select.png*1
-imageScale: 1.5
+imageScale: 2
 frame_width: 32
 frame_height: 32
 layer: afterBody

@@ -2,21 +2,21 @@
 strictLevel: 1
 
 [global_resource_gold]
-iconImage: ROOT:\data\images\gold.png
+iconImage: ROOT:images\gold.png
 displayName: Gold
 hidden:false
 priority: 1
 displayColor: #DE7500
 
 [global_resource_wood]
-iconImage: ROOT:\data\images\wood.png
+iconImage: ROOT:images\wood.png
 displayName: Wood
 hidden:false
 priority: 1
 displayColor: #d15700
 
 [global_resource_rice]
-iconImage: ROOT:\data\images\rice.png
+iconImage: ROOT:images\rice.png
 displayName: Rice
 hidden:false
 priority: 1
