@@ -1,3 +1,11 @@
+[core]
+class: CustomUnitMetadata
+tags: infantry
+effectOnDeath:CUSTOM:blood*10
+isBio: false
+isBug: false
+explodeOnDeath: false
+
 [action_infantry_icon]
 pos: 0.1
 displayType: upgrade
@@ -5,3 +13,41 @@ iconImage: icon.png
 iconExtraImage: icon.png
 isVisible: true
 buildSpeed: 0
+
+[graphics]
+image_wreak:ROOT:images\base_dead.png
+image_shadow: SHADOW:ROOT:images\shadow.png
+
+teamColoringMode: pureGreen
+teamColorsOnTurret: true
+
+icon_build: icon.png
+icon_zoomed_out: icon.png
+
+disableLowHpFire: true
+disableLowHpSmoke: true
+
+shadowOffsetX: 0
+shadowOffsetY: 0
+
+dustEffect: true 
+movementEffectRate: 20
+
+[projectile_1]
+explodeEffect: CUSTOM:effect1
+
+[effect_effect1]
+image: projectile.png
+attachedToUnit: false
+drawUnderUnits: false
+life: 120
+spawnChance: 1
+color: #ffffff
+alpha: 1
+physics: false
+fadeOut: true
+scaleFrom: 1
+scaleTo: 0.2
+priority: low
+xSpeedRelative: 0.1
+alwayStartDirAtZero: true
