@@ -1,10 +1,11 @@
 [core]
 class: CustomUnitMetadata
 tags: infantry
-effectOnDeath:CUSTOM:blood*10
 isBio: false
 isBug: false
+
 explodeOnDeath: false
+effectOnDeath: blood*10
 
 [action_infantry_icon]
 pos: 0.1
@@ -51,3 +52,15 @@ scaleTo: 0.2
 priority: low
 xSpeedRelative: 0.1
 alwayStartDirAtZero: true
+
+[effect_blood]
+attachedToUnit:false
+life:300
+physics:true
+scaleFrom:1
+scaleTo:0.5
+xSpeedRelativeRandom: 0.6
+ySpeedRelativeRandom: 0.6
+hSpeed:1
+image:ROOT:images\blood.png
+drawUnderUnits:false
