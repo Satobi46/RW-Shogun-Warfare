@@ -1,4 +1,4 @@
-### MELEE DAMAGE NUMBERS AND ACTION GOES HERE ###
+### RANGED DAMAGE NUMBERS AND ACTION GOES HERE ###
 
 [hiddenAction_attack_attacker]
 autoTrigger: if self.hasTakenDamage(withinSeconds=5) and self.isControlledByAI()
@@ -10,7 +10,7 @@ addWaypoint_target_mapMustBeReachable: true
 debugMessage: "Taken Damage!"
 
 [projectile_1]
-tags: melee
+tags: ranged
 
 [effect_effect1]
 image: projectile.png
