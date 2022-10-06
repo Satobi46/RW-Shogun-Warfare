@@ -3,7 +3,6 @@ strictLevel: 0
 
 [graphics]
 image_shield: ROOT:images\noshield.png
-#image_shield: NONE
 
 #[arm_1]
 #x: 0
@@ -20,7 +19,6 @@ frame_width: 32
 frame_height: 32
 layer: afterBody
 teamColors: true
-#onlyWhenSelectedByAnyPlayer: true
 
 [decal_selection]
 imageStack: ROOT:images\select.png*1

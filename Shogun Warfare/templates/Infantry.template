@@ -3,10 +3,11 @@ class: CustomUnitMetadata
 tags: infantry
 isBio: false
 isBug: false
-
 explodeOnDeath: false
 effectOnDeath: blood*10
 
+
+### AI ACTION GOES HERE ###
 [action_infantry_icon]
 pos: 0.1
 displayType: upgrade
@@ -15,33 +16,43 @@ iconExtraImage: icon.png
 isVisible: true
 buildSpeed: 0
 
+#[hiddenAction_find_boat] experimental
+#autoTrigger: if self.isControlledByAI() and self.customTimer(laterThanSeconds = 20)
+#addWaypoint_target_mapMustBeReachable: true
+#addWaypoint_type: loadinto
+#addWaypoint_target_nearestUnit_tagged: ship, boat, transport
+#addWaypoint_target_nearestUnit_maxRange: 1000
+#addWaypoint_maxTime: 15s
+#debugMessage:"find transport"
+#resetCustomTimer: true
+
+### GRAPHICS GOES HERE ###
 [graphics]
 image_wreak:ROOT:images\base_dead.png
 image_shadow: SHADOW:ROOT:images\shadow.png
-
 teamColoringMode: pureGreen
 teamColorsOnTurret: true
-
 icon_build: icon.png
 icon_zoomed_out: icon.png
-
 disableLowHpFire: true
 disableLowHpSmoke: true
-
 shadowOffsetX: 0
 shadowOffsetY: 0
-
 dustEffect: true 
 movementEffectRate: 20
 
+
+### PROJECTILES GOES HERE ###
 [projectile_1]
 explodeEffect: CUSTOM:effect1
 
+
+### EFFECTS GOES HERE ###
 [effect_effect1]
 image: projectile.png
 attachedToUnit: false
 drawUnderUnits: false
-life: 120
+life:120
 spawnChance: 1
 color: #ffffff
 alpha: 1
@@ -52,7 +63,6 @@ scaleTo: 0.2
 priority: low
 xSpeedRelative: 0.1
 alwayStartDirAtZero: true
-
 [effect_blood]
 attachedToUnit:false
 life:300
@@ -63,4 +73,16 @@ xSpeedRelativeRandom: 0.6
 ySpeedRelativeRandom: 0.6
 hSpeed:1
 image:ROOT:images\blood.png
+drawUnderUnits:false
+
+[effect_chat1]
+attachedToUnit:false
+life:150
+physics:true
+scaleFrom:0.5
+scaleTo:0.2
+yOffsetAbsolute: -3
+ySpeedAbsolute: -2
+alwayStartDirAtZero: true
+image:ROOT:images\chat1.png
 drawUnderUnits:false
