@@ -1,13 +1,13 @@
 ### RANGED DAMAGE NUMBERS AND ACTION GOES HERE ###
 
 [hiddenAction_attack_attacker]
-autoTrigger: if self.hasTakenDamage(withinSeconds=5) and self.isControlledByAI()
-addWaypoint_type: attackMove
+autoTrigger: if self.hasTakenDamage(withinSeconds=2) and self.isControlledByAI()
+addWaypoint_type: attack
 addWaypoint_target_nearestUnit_team: enemy	
 addWaypoint_target_nearestUnit_tagged: infantry
 addWaypoint_target_nearestUnit_maxRange: 500
 addWaypoint_target_mapMustBeReachable: true
-debugMessage: "Taken Damage!"
+debugMessage: "Taken Damage! Range"
 
 [projectile_1]
 tags: ranged
