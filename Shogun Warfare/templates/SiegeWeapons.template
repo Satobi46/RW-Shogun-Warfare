@@ -1,14 +1,17 @@
 [core]
-@copyFromSection: template_voice1
-copyFrom: voices.template, effects.template
-explodeOnDeath: false
-explodeOnDeathGroundCollision: false
-tags: haevyVehicle, vehicle
-transportSlotsNeeded:2
-fogOfWarSightRange:6
-mass: 1600
+class: CustomUnitMetadata
+tags: siege, siegeweapon, siegeweapons
 
 [graphics]
-drawLayer: ground2
-disableLowHpFire: true
-disableLowHpSmoke: true
+teamColoringMode: pureGreen
+teamColorsOnTurret: true
+icon_build: icon.png
+icon_zoomed_out: icon.png
+
+[action_infantry_icon]
+pos: 0.1
+displayType: upgrade
+iconImage: icon.png
+iconExtraImage: icon.png
+isVisible: true
+buildSpeed: 0

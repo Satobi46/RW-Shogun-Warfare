@@ -1,5 +1,5 @@
 [core]
-strictLevel: 1
+strictLevel: 0
 
 [global_resource_gold]
 iconImage: ROOT:images\gold.png
@@ -8,6 +8,10 @@ hidden:false
 priority: 1
 displayColor: #DE7500
 
+displayNameShort: GLD
+displayWhenZero: true
+iconImageUseInText: true
+
 [global_resource_wood]
 iconImage: ROOT:images\wood.png
 displayName: Wood
@@ -15,11 +19,19 @@ hidden:false
 priority: 1
 displayColor: #d15700
 
+displayNameShort: WOD
+displayWhenZero: true
+iconImageUseInText: true
+
 [global_resource_rice]
 iconImage: ROOT:images\rice.png
 displayName: Rice
 hidden:false
 priority: 1
 displayColor: #ffe393
+
+displayNameShort: RIC
+displayWhenZero: true
+iconImageUseInText: true
 
 

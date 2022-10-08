@@ -14,10 +14,11 @@ image_shield: ROOT:images\noshield.png
 [decal_circle]
 basePosition: self.getOffsetRelative(diroffset=self.timeAlive()*50)
 imageStack: ROOT:images\buildingshield.png*1
-imageScale: 2
-frame_width: 32
-frame_height: 32
-layer: afterBody
+imageScale: 1.5
+frame_width: 64
+frame_height: 64
+
+layer: shadow
 teamColors: true
 
 [decal_selection]
@@ -25,6 +26,8 @@ imageStack: ROOT:images\select.png*1
 imageScale: 2
 frame_width: 32
 frame_height: 32
-layer: afterBody
+layer: beforeUI
 teamColors: true
 onlyWhenSelectedByAnyPlayer: true
+
+

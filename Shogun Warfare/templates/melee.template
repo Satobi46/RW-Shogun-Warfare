@@ -7,7 +7,11 @@ addWaypoint_target_nearestUnit_team: enemy
 addWaypoint_target_nearestUnit_tagged: infantry
 addWaypoint_target_nearestUnit_maxRange: 500
 addWaypoint_target_mapMustBeReachable: true
-debugMessage: "Taken Damage!"
+debugMessage: "Taken Damage! Melee"
+
+[turret_1]
+shoot_sound: ROOT:audio\blade1.ogg
+shoot_sound_vol: 0.2
 
 [projectile_1]
 tags: melee
