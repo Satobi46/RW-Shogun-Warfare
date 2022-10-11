@@ -4,13 +4,6 @@ strictLevel: 0
 [graphics]
 image_shield: ROOT:images\noshield.png
 
-#[arm_1]
-#x: 0
-#y: 0
-#image_end: ROOT:images\buildingshield.png
-#drawUnderAllUnits: true
-#spinRate: 0.5
-
 [decal_circle]
 basePosition: self.getOffsetRelative(diroffset=self.timeAlive()*50)
 imageStack: ROOT:images\buildingshield.png*1
@@ -18,7 +11,7 @@ imageScale: 1.5
 frame_width: 64
 frame_height: 64
 
-layer: shadow
+#layer: shadow
 teamColors: true
 
 [decal_selection]

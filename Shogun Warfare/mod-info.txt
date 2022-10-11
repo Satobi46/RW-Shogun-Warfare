@@ -1,7 +1,13 @@
 [mod]
 title: Shogun Warfare
 description: Shogun Warfare! by: SatobiS
+Shogun II: Total War OST used by Jeff van Dyck
+Artist: Jeff van Dyck / SEGA
+Release date: April 11, 2011
+
 minVersion: 1.15p9
 
-
+[music]
+sourceFolder: music
+whenUsingUnitsFromThisMod_playExclusively: true
 
