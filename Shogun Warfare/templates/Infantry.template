@@ -6,6 +6,8 @@ isBug: false
 explodeOnDeath: false
 effectOnDeath: blood*10
 
+soundOnNewSelection: ROOT:audio\click1.wav
+
 
 ### AI ACTION GOES HERE ###
 [action_infantry_icon]

@@ -2,6 +2,8 @@
 class: CustomUnitMetadata
 tags: siege, siegeweapon, siegeweapons
 
+soundOnNewSelection: ROOT:audio\click1.wav
+
 [graphics]
 teamColoringMode: pureGreen
 teamColorsOnTurret: true

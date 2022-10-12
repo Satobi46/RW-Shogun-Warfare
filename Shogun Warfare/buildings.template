@@ -1,5 +1,6 @@
 [core]
 strictLevel: 0
+soundOnNewSelection: ROOT:audio\click1.wav
 
 [graphics]
 image_shield: ROOT:images\noshield.png
