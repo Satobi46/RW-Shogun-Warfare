@@ -15,19 +15,23 @@ shoot_sound_vol: 0.2
 
 [projectile_1]
 tags: melee
+explodeEffect: CUSTOM:effect1, CUSTOM:effect2
 
 [effect_effect1]
 image: projectile.png
 attachedToUnit: false
 drawUnderUnits: false
-life: 50
+life: 70
 spawnChance: 1
 color: #ffffff
 alpha: 1
 physics: false
 fadeOut: true
 scaleFrom: 1
-scaleTo: 0.2
+scaleTo: 0.1
 priority: low
 xSpeedRelative: 0.1
 alwayStartDirAtZero: true
+
+[effect_effect2]
+image: ROOT:images\png.png

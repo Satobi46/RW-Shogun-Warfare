@@ -18,6 +18,7 @@ iconExtraImage: icon.png
 isVisible: true
 buildSpeed: 0
 
+
 #[hiddenAction_find_boat] experimental
 #autoTrigger: if self.isControlledByAI() and self.customTimer(laterThanSeconds = 20)
 #addWaypoint_target_mapMustBeReachable: true

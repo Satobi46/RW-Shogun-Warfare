@@ -1,13 +1,41 @@
 ### RANGED DAMAGE NUMBERS AND ACTION GOES HERE ###
-
 [hiddenAction_attack_attacker]
-autoTrigger: if self.hasTakenDamage(withinSeconds=2) and self.isControlledByAI()
+autoTrigger: if self.hasTakenDamage(withinSeconds=10) and self.isControlledByAI()
+requireConditional: if self.isControlledByAI()
 addWaypoint_type: attack
 addWaypoint_target_nearestUnit_team: enemy	
-addWaypoint_target_nearestUnit_tagged: infantry
-addWaypoint_target_nearestUnit_maxRange: 500
+addWaypoint_target_nearestUnit_tagged: infantry, siegeweapons, siege, lightinfantry
+addWaypoint_target_nearestUnit_maxRange: 300
 addWaypoint_target_mapMustBeReachable: true
-debugMessage: "Taken Damage! Ranged"
+debugMessage: "RANGED Damaged"
+resetCustomTimer: true
+[hiddenAction_findtowerTower]
+autoTriggerOnEvent: created
+autoTrigger: if self.customTimer(laterThanSeconds= 30)
+requireConditional: if self.isControlledByAI()
+addWaypoint_type: loadInto
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_nearestUnit_tagged: tower, archer, archertower, archer_tower
+addWaypoint_target_nearestUnit_maxRange: 1500
+addWaypoint_target_mapMustBeReachable: true
+debugMessage: "RANGED Not Attacking."
+addWaypoint_maxTime: 59s
+resetCustomTimer: true
+### TRANSPORT ###
+[hiddenAction_deattached]
+autoTriggerOnEvent: leftTransport
+requireConditional: if eventSource.readUnitMemory("rally_point", type="unit") != null
+clearAllWaypoints: true
+addWaypoint_type: move
+addWaypoint_target_fromReference: eventSource.readUnitMemory("rally_point", type="unit")
+debugMessage: "RANGED detached transport."
+[hiddenAction_enteredTransport]
+autoTrigger: if self.hasParent(withTag="tower")
+setUnitStats: maxAttackRange=250
+[hiddenAction_leftTransport]
+autoTriggerOnEvent: leftTransport
+resetUnitStats: true
+### ACTION END ###
 
 [turret_1]
 shoot_sound: ROOT:audio\bow1.ogg
