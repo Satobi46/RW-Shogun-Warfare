@@ -1,26 +1,43 @@
 ### RANGED DAMAGE NUMBERS AND ACTION GOES HERE ###
 [hiddenAction_attack_attacker]
-autoTrigger: if self.hasTakenDamage(withinSeconds=10) and self.isControlledByAI()
-requireConditional: if self.isControlledByAI()
-addWaypoint_type: attack
+resetCustomTimer: true
+#requireConditional: if self.isControlledByAI()
+autoTrigger: if self.hasTakenDamage(withinSeconds=5) and self.isControlledByAI()
+addWaypoint_type: attackMove
 addWaypoint_target_nearestUnit_team: enemy	
-addWaypoint_target_nearestUnit_tagged: infantry, siegeweapons, siege, lightinfantry
+addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon
 addWaypoint_target_nearestUnit_maxRange: 300
 addWaypoint_target_mapMustBeReachable: true
 debugMessage: "RANGED Damaged"
-resetCustomTimer: true
+
 [hiddenAction_findtowerTower]
+resetCustomTimer: true
 autoTriggerOnEvent: created
 autoTrigger: if self.customTimer(laterThanSeconds= 30)
 requireConditional: if self.isControlledByAI()
 addWaypoint_type: loadInto
 addWaypoint_target_nearestUnit_team: own
-addWaypoint_target_nearestUnit_tagged: tower, archer, archertower, archer_tower
+addWaypoint_target_nearestUnit_tagged: archertower_empty
 addWaypoint_target_nearestUnit_maxRange: 1500
 addWaypoint_target_mapMustBeReachable: true
 debugMessage: "RANGED Not Attacking."
-addWaypoint_maxTime: 59s
+addWaypoint_maxTime: 60s
+
+[hiddenAction_findtowerTower]
 resetCustomTimer: true
+autoTriggerOnEvent: created
+autoTrigger: if self.customTimer() >= 60
+requireConditional: if self.isControlledByAI()
+addWaypoint_type: loadInto
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_nearestUnit_tagged: archertower_empty
+addWaypoint_target_nearestUnit_maxRange: 1500
+addWaypoint_target_mapMustBeReachable: true
+debugMessage: "Finding Tower."
+addWaypoint_maxTime: 60s
+
+
+
 ### TRANSPORT ###
 [hiddenAction_deattached]
 autoTriggerOnEvent: leftTransport
@@ -48,7 +65,7 @@ tags: ranged
 image: projectile.png
 attachedToUnit: false
 drawUnderUnits: false
-life: 50
+life: 70
 spawnChance: 1
 color: #ffffff
 alpha: 1

@@ -1,13 +1,14 @@
 ### MELEE DAMAGE NUMBERS AND ACTION GOES HERE ###
-
 [hiddenAction_attack_attacker]
+resetCustomTimer: true
+#requireConditional: if self.isControlledByAI()
 autoTrigger: if self.hasTakenDamage(withinSeconds=5) and self.isControlledByAI()
 addWaypoint_type: attackMove
 addWaypoint_target_nearestUnit_team: enemy	
-addWaypoint_target_nearestUnit_tagged: infantry
-addWaypoint_target_nearestUnit_maxRange: 500
+addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon
+addWaypoint_target_nearestUnit_maxRange: 300
 addWaypoint_target_mapMustBeReachable: true
-debugMessage: "Taken Damage! Melee"
+debugMessage: "MELEE Damaged"
 
 [turret_1]
 shoot_sound: ROOT:audio\blade1.ogg
@@ -28,7 +29,7 @@ alpha: 1
 physics: false
 fadeOut: true
 scaleFrom: 1
-scaleTo: 0.1
+scaleTo: 0.2
 priority: low
 xSpeedRelative: 0.1
 alwayStartDirAtZero: true

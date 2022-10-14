@@ -1,13 +1,3 @@
-[core]
-copyFrom: voices.template, effects.template
-explodeOnDeath: false
-explodeOnDeathGroundCollision: false
-tags: cavalry
-transportSlotsNeeded:2
-fogOfWarSightRange:6
-mass: 250
+### NONE - Will be used in later or futuer. ###
 
-[graphics]
-drawLayer: ground2
-disableLowHpFire: true
-disableLowHpSmoke: true
+
