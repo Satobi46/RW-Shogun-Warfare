@@ -5,7 +5,6 @@ isBio: false
 isBug: false
 explodeOnDeath: false
 effectOnDeath: blood*10
-
 soundOnNewSelection: ROOT:audio\click1.wav
 
 
@@ -19,7 +18,7 @@ isVisible: true
 buildSpeed: 0
 
 
-#[hiddenAction_find_boat] experimental
+#[hiddenAction_find_boat] experimental used on waterloo maps
 #autoTrigger: if self.isControlledByAI() and self.customTimer(laterThanSeconds = 20)
 #addWaypoint_target_mapMustBeReachable: true
 #addWaypoint_type: loadinto
@@ -28,6 +27,19 @@ buildSpeed: 0
 #addWaypoint_maxTime: 15s
 #debugMessage:"find transport"
 #resetCustomTimer: true
+
+[hiddenAction_go_heal]
+resetCustomTimer: true
+autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1
+requireConditional: if self.isControlledByAI()
+addWaypoint_type: loadInto
+addWaypoint_maxTime: 90s
+addWaypoint_target_nearestUnit_tagged: buddhist_temple
+addWaypoint_target_nearestUnit_team: ally
+addWaypoint_target_nearestUnit_maxRange: 2500
+addWaypoint_target_mapMustBeReachable: true
+debugMessage: "Hp.Low"
+
 
 ### GRAPHICS GOES HERE ###
 [graphics]
