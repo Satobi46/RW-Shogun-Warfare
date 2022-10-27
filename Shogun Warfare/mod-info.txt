@@ -1,7 +1,8 @@
 [mod]
-title: Shogun Warfare II: TITS BETA (The Incarnation of The Shogun)
-description: Shogun Warfare II: TITS BETA ! by: SatobiS
+title: Shogun Warfare II: TITS (The Incarnation of The Shogun)
+description: Shogun Warfare II: TITS by: SatobiS. This mod is a samurai era themed mod for Rusted Warfare which introduces samurai units on the battlefield and rat infested ricefield. It's a total conversion mod and requires 1.15p10 version and above of Rusted Warfare to play.
 
+i don't know to code I need help pls! <<<
 
 Music Used:
 Shogun II: Total War OST used by Jeff van Dyck
