@@ -8,7 +8,7 @@ hidden:false
 priority: 1
 displayColor: #DE7500
 
-displayNameShort: GLD
+displayNameShort: gold
 displayWhenZero: true
 iconImageUseInText: true
 
@@ -19,7 +19,7 @@ hidden:false
 priority: 1
 displayColor: #d15700
 
-displayNameShort: WOD
+displayNameShort: wood
 displayWhenZero: true
 iconImageUseInText: true
 
@@ -30,7 +30,7 @@ hidden:false
 priority: 1
 displayColor: #ffe393
 
-displayNameShort: RIC
+displayNameShort: rice
 displayWhenZero: true
 iconImageUseInText: true
 
