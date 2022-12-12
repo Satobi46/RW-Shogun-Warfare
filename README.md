@@ -1,4 +1,4 @@
-# RW-Shogun-Warfare (PRIVATE)
+# RW-Shogun-Warfare (Public)
 ###### A Samurai Warfare (The Age of the Samurai) Mod for Rusted Warfare by: **Satobi46**
 
 > **do not repost the mod from other sources without permission from me.**
