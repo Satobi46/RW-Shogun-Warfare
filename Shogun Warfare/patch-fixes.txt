@@ -9,3 +9,4 @@ Patch Updates and Fixes.
 - mangonel damage multiplier increased to x3 from x2.4 (lightinfantry, infantry, buildings, structure, resources, base, structures).
 - tadakatsus tetsubo damage multiplier from buildings decreased to x0.5 from x2 and moveSpeed to 1 from 1.2.
 - "light cavalry and bow cavalry" units now have decreased damage to heavy infantry units by -x1.
+- Finally after more than 8 hours of fixing that srttrail.txt, bad clusters, heating or whatever I finally managed to fixed my PC! 
