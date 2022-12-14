@@ -9,8 +9,11 @@ explodeOnDeath: false
 effectOnDeath: blood*10
 soundOnNewSelection: ROOT:audio\click1.wav
 
+@memory Rank: float
+#copyFrom: ROOT:ui\health.bar
 
 ### AI ACTION GOES HERE ###
+
 [action_infantry_icon]
 pos: 0.1
 displayType: upgrade
@@ -18,6 +21,12 @@ iconImage: icon.png
 iconExtraImage: icon.png
 isVisible: true
 buildSpeed: 0
+
+
+#[hiddenAction_lvl1_unit]
+#autoTrigger: if self.kills(greaterThan=10)
+#convertTo: lvl1_unit
+#convertTo_keepCurrentTags: true
 
 
 #[hiddenAction_find_boat] experimental used on waterloo maps
@@ -31,16 +40,16 @@ buildSpeed: 0
 #resetCustomTimer: true
 
 [hiddenAction_go_heal]
-resetCustomTimer: true
 autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1
 requireConditional: if self.isControlledByAI()
 addWaypoint_type: loadInto
 addWaypoint_maxTime: 90s
 addWaypoint_target_nearestUnit_tagged: buddhist_temple
 addWaypoint_target_nearestUnit_team: ally
-addWaypoint_target_nearestUnit_maxRange: 2500
+addWaypoint_target_nearestUnit_maxRange: 5000
 addWaypoint_target_mapMustBeReachable: true
 debugMessage: "Hp.Low"
+resetCustomTimer: true
 
 
 ### GRAPHICS GOES HERE ###
@@ -86,3 +95,66 @@ ySpeedAbsolute: -2
 alwayStartDirAtZero: true
 image:ROOT:images\chat1.png
 drawUnderUnits:false
+
+
+#### LEVEL UP CODE ####
+
+
+[attachment_slo11]
+x:-5
+y:0
+isVisible:true
+isUnselectable:true
+canAttack:false
+canBeAttackedAndDamaged:false
+setDrawLayerOnTop:true
+addTransportedUnits:true
+
+[attachment_slo22]
+x:0
+y:0
+isVisible:true
+isUnselectable:true
+canAttack:false
+canBeAttackedAndDamaged:false
+setDrawLayerOnTop:true
+addTransportedUnits:true
+
+[attachment_slo33]
+x:5
+y:0
+isVisible:true
+isUnselectable:true
+canAttack:false
+canBeAttackedAndDamaged:false
+setDrawLayerOnTop:true
+addTransportedUnits:true
+
+
+
+#[hiddenAction_levelup1]
+#autoTrigger: if self.kills(greaterThan=3)
+#attachments_addNewUnits: lvlup1
+#setUnitStats: armour=+5
+#[hiddenAction_levelup2]
+#autoTrigger: if self.kills(greaterThan=6)
+#attachments_addNewUnits: lvlup2
+#setUnitStats: armour=+10
+#[hiddenAction_levelup3]
+#autoTrigger: if self.kills(greaterThan=9)
+#attachments_addNewUnits: lvlup3
+#setUnitStats: armour=+15
+
+
+
+[hiddenAction_RankUp]
+@define killsPerRank: 5
+@define maxRank: 3
+autoTriggerOnEvent: killedAnyUnit
+setUnitMemory: Rank=memory.Rank+1
+requireConditional: if (self.kills() >=${killsPerRank}+memory.Rank*${killsPerRank}) and memory.Rank < ${maxRank}
+setUnitStats: maxHp+=5, armour+=1
+
+attachments_addNewUnits: lvlup1
+
+#setUnitStats: (Insert your stat increases here, ex. shootDelayMultiplier+=0.1, does 10% faster shooting per Rank)
