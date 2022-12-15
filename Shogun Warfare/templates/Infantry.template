@@ -1,4 +1,4 @@
-### I'm need help pls contak me on discord Satobi#4236 ###
+### Looking for people, Discord Satobi#4236 ###
 
 [core]
 class: CustomUnitMetadata
@@ -9,25 +9,23 @@ explodeOnDeath: false
 effectOnDeath: blood*10
 soundOnNewSelection: ROOT:audio\click1.wav
 
+selfRegenRate: 0.01
+
 @memory Rank: float
+
+soundOnDeath: ROOT:audio\Yooooooooo.ogg
+
 #copyFrom: ROOT:ui\health.bar
 
 ### AI ACTION GOES HERE ###
 
-[action_infantry_icon]
-pos: 0.1
-displayType: upgrade
-iconImage: icon.png
-iconExtraImage: icon.png
-isVisible: true
-buildSpeed: 0
-
-
-#[hiddenAction_lvl1_unit]
-#autoTrigger: if self.kills(greaterThan=10)
-#convertTo: lvl1_unit
-#convertTo_keepCurrentTags: true
-
+#[action_infantry_icon]
+#pos: 0.1
+#displayType: upgrade
+#iconImage: icon.png
+#iconExtraImage: icon.png
+#isVisible: true
+#buildSpeed: 0
 
 #[hiddenAction_find_boat] experimental used on waterloo maps
 #autoTrigger: if self.isControlledByAI() and self.customTimer(laterThanSeconds = 20)
@@ -39,17 +37,29 @@ buildSpeed: 0
 #debugMessage:"find transport"
 #resetCustomTimer: true
 
-[hiddenAction_go_heal]
-autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1
+#[hiddenAction_lvl1_unit]
+#autoTrigger: if self.kills(greaterThan=10)
+#convertTo: lvl1_unit
+#convertTo_keepCurrentTags: true
+
+
+[hiddenAction_goHeal]
+#autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1 OLD
+autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI()
 requireConditional: if self.isControlledByAI()
 addWaypoint_type: loadInto
-addWaypoint_maxTime: 90s
+addWaypoint_maxTime: 60s
 addWaypoint_target_nearestUnit_tagged: buddhist_temple
-addWaypoint_target_nearestUnit_team: ally
+addWaypoint_target_nearestUnit_team: own
 addWaypoint_target_nearestUnit_maxRange: 5000
 addWaypoint_target_mapMustBeReachable: true
 debugMessage: "Hp.Low"
-resetCustomTimer: true
+
+[hiddenAction_unloadTemple]
+autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI()
+startUnloadingTransport: true
+#resetCustomTimer: true
+
 
 
 ### GRAPHICS GOES HERE ###
@@ -97,11 +107,11 @@ image:ROOT:images\chat1.png
 drawUnderUnits:false
 
 
-#### LEVEL UP CODE ####
+#### >>> LEVEL UP CODE <<< ####
 
 
 [attachment_slo11]
-x:-5
+x:-10
 y:0
 isVisible:true
 isUnselectable:true
@@ -109,7 +119,6 @@ canAttack:false
 canBeAttackedAndDamaged:false
 setDrawLayerOnTop:true
 addTransportedUnits:true
-
 [attachment_slo22]
 x:0
 y:0
@@ -119,9 +128,8 @@ canAttack:false
 canBeAttackedAndDamaged:false
 setDrawLayerOnTop:true
 addTransportedUnits:true
-
 [attachment_slo33]
-x:5
+x:10
 y:0
 isVisible:true
 isUnselectable:true
@@ -131,6 +139,18 @@ setDrawLayerOnTop:true
 addTransportedUnits:true
 
 
+[hiddenAction_RankUp1]
+@define killsPerRank: 5
+@define maxRank: 3
+autoTriggerOnEvent: killedAnyUnit
+setUnitMemory: Rank=memory.Rank+1
+requireConditional: if (self.kills() >=${killsPerRank}+memory.Rank*${killsPerRank}) and memory.Rank < ${maxRank}
+setUnitStats: maxHp+=5, armour+=2
+attachments_addNewUnits: lvlup1
+
+### UNUSED ###
+
+#setUnitStats: (Insert your stat increases here, ex. shootDelayMultiplier+=0.1, does 10% faster shooting per Rank)
 
 #[hiddenAction_levelup1]
 #autoTrigger: if self.kills(greaterThan=3)
@@ -144,17 +164,3 @@ addTransportedUnits:true
 #autoTrigger: if self.kills(greaterThan=9)
 #attachments_addNewUnits: lvlup3
 #setUnitStats: armour=+15
-
-
-
-[hiddenAction_RankUp]
-@define killsPerRank: 5
-@define maxRank: 3
-autoTriggerOnEvent: killedAnyUnit
-setUnitMemory: Rank=memory.Rank+1
-requireConditional: if (self.kills() >=${killsPerRank}+memory.Rank*${killsPerRank}) and memory.Rank < ${maxRank}
-setUnitStats: maxHp+=5, armour+=1
-
-attachments_addNewUnits: lvlup1
-
-#setUnitStats: (Insert your stat increases here, ex. shootDelayMultiplier+=0.1, does 10% faster shooting per Rank)

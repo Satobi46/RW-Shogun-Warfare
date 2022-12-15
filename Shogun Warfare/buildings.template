@@ -7,10 +7,11 @@ image_shield: ROOT:images\noshield.png
 
 [decal_circle]
 basePosition: self.getOffsetRelative(diroffset=self.timeAlive()*50)
-imageStack: ROOT:images\buildingshield.png*1
-imageScale: 1.5
-frame_width: 64
-frame_height: 64
+imageStack: ROOT:images\gcircle01.png*1
+imageScale: 1.7
+frame_width: 32
+frame_height: 32
+teamColors: true
 
 #layer: shadow
 teamColors: true

@@ -20,7 +20,7 @@ tags: units, katana, samurai, totalconversion, total conversion, joe, ricefield,
 thumbnail: thumbnail.png
 
 credits and special thanks to:
-SioxerNikita and ZetterZet for helping me so much! 
+Luke, SioxerNikita and ZetterZet for helping me so much!
 
 [music]
 sourceFolder: music
