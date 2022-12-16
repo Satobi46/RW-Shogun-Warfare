@@ -56,7 +56,7 @@ resetUnitStats: true
 
 [turret_1]
 shoot_sound: ROOT:audio\bow1.ogg
-shoot_sound_vol: 0.05
+shoot_sound_vol: 0.08
 
 [projectile_1]
 tags: ranged

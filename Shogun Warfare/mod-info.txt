@@ -19,8 +19,8 @@ minVersion: 1.15p9
 tags: units, katana, samurai, totalconversion, total conversion, joe, ricefield, asian, japanese, shogun, rice
 thumbnail: thumbnail.png
 
-credits and special thanks to:
-Luke, SioxerNikita and ZetterZet for helping me so much!
+Credits and Special thanks to:
+SioxerNikita and ZetterZet for helping me so much!
 
 [music]
 sourceFolder: music

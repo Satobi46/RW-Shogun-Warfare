@@ -13,8 +13,13 @@ frame_width: 32
 frame_height: 32
 teamColors: true
 
-#layer: shadow
+onlyWithZoomLevelOrMore: 0.4
+onlyWhileActive: true
+onlyWhileAlive: true
+#onlyTeam: own
 teamColors: true
+layer: shadow
+alpha: 0.5
 
 [decal_selection]
 imageStack: ROOT:images\select.png*1
@@ -24,5 +29,3 @@ frame_height: 32
 layer: beforeUI
 teamColors: true
 onlyWhenSelectedByAnyPlayer: true
-
-
