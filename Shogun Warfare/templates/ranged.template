@@ -1,57 +1,40 @@
 ### RANGED DAMAGE NUMBERS AND ACTION GOES HERE ###
+
 [hiddenAction_attack_attacker]
 resetCustomTimer: true
-#requireConditional: if self.isControlledByAI()
-autoTrigger: if self.hasTakenDamage(withinSeconds=5) and self.isControlledByAI()
+autoTrigger: if self.hasTakenDamage(withinSeconds=1) and self.isControlledByAI()
+requireConditional: if self.isControlledByAI()
 addWaypoint_type: attackMove
 addWaypoint_target_nearestUnit_team: enemy	
-addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon
-addWaypoint_target_nearestUnit_maxRange: 300
+addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon, heavy, bow, melee, cavalry
+addWaypoint_target_nearestUnit_maxRange: 100
 addWaypoint_target_mapMustBeReachable: true
-debugMessage: "RANGED Damaged"
 
 [hiddenAction_findtowerTower]
 resetCustomTimer: true
 autoTriggerOnEvent: created
-autoTrigger: if self.customTimer(laterThanSeconds= 30)
+autoTrigger: if self.customTimer(laterThanSeconds=20) and self.isControlledByAI()
 requireConditional: if self.isControlledByAI()
 addWaypoint_type: loadInto
 addWaypoint_target_nearestUnit_team: own
 addWaypoint_target_nearestUnit_tagged: archertower_empty
 addWaypoint_target_nearestUnit_maxRange: 1500
 addWaypoint_target_mapMustBeReachable: true
-debugMessage: "RANGED Not Attacking."
-addWaypoint_maxTime: 60s
-
-[hiddenAction_findtowerTower]
-resetCustomTimer: true
-autoTriggerOnEvent: created
-autoTrigger: if self.customTimer() >= 60
-requireConditional: if self.isControlledByAI()
-addWaypoint_type: loadInto
-addWaypoint_target_nearestUnit_team: own
-addWaypoint_target_nearestUnit_tagged: archertower_empty
-addWaypoint_target_nearestUnit_maxRange: 1500
-addWaypoint_target_mapMustBeReachable: true
-debugMessage: "Finding Tower."
-addWaypoint_maxTime: 60s
-
-
+addWaypoint_maxTime: 30s
 
 ### TRANSPORT ###
-[hiddenAction_deattached]
-autoTriggerOnEvent: leftTransport
-requireConditional: if eventSource.readUnitMemory("rally_point", type="unit") != null
-clearAllWaypoints: true
-addWaypoint_type: move
-addWaypoint_target_fromReference: eventSource.readUnitMemory("rally_point", type="unit")
-debugMessage: "RANGED detached transport."
-[hiddenAction_enteredTransport]
-autoTrigger: if self.hasParent(withTag="tower")
-setUnitStats: maxAttackRange=250
-[hiddenAction_leftTransport]
-autoTriggerOnEvent: leftTransport
-resetUnitStats: true
+#[hiddenAction_deattached]
+#autoTriggerOnEvent: leftTransport
+#requireConditional: if eventSource.readUnitMemory("rally_point", type="unit") != null
+#clearAllWaypoints: true
+#addWaypoint_type: move
+#addWaypoint_target_fromReference: eventSource.readUnitMemory("rally_point", type="unit")
+#[hiddenAction_enteredTransport]
+#autoTrigger: if self.hasParent(withTag="tower")
+#setUnitStats: maxAttackRange=250
+#[hiddenAction_leftTransport]
+#autoTriggerOnEvent: leftTransport
+#resetUnitStats: true
 ### ACTION END ###
 
 [turret_1]

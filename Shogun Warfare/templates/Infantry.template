@@ -10,14 +10,16 @@ effectOnDeath: blood*10
 soundOnNewSelection: ROOT:audio\click1.wav
 
 selfRegenRate: 0.01
-@memory Rank: float
+
 effectOnDeath: CUSTOM:dsound01
+@memory Rank: float
+
+fogOfWarSightRange: 10
 
 #soundOnDeath: ROOT:audio\wilhelmScream.ogg
 #copyFrom: ROOT:ui\health.bar
 
 ### AI ACTION GOES HERE ###
-
 #[action_infantry_icon]
 #pos: 0.1
 #displayType: upgrade
@@ -25,7 +27,6 @@ effectOnDeath: CUSTOM:dsound01
 #iconExtraImage: icon.png
 #isVisible: true
 #buildSpeed: 0
-
 #[hiddenAction_find_boat] experimental used on waterloo maps
 #autoTrigger: if self.isControlledByAI() and self.customTimer(laterThanSeconds = 20)
 #addWaypoint_target_mapMustBeReachable: true
@@ -35,28 +36,40 @@ effectOnDeath: CUSTOM:dsound01
 #addWaypoint_maxTime: 15s
 #debugMessage:"find transport"
 #resetCustomTimer: true
-
 #[hiddenAction_lvl1_unit]
 #autoTrigger: if self.kills(greaterThan=10)
 #convertTo: lvl1_unit
 #convertTo_keepCurrentTags: true
 
 
+[hiddenAction_cantReach]
+autoTrigger: if not self.isOverPassableTile() and self.isControlledByAI()
+addWaypoint_type: loadInto
+addWaypoint_target_nearestUnit_tagged: boat
+addWaypoint_target_nearestUnit_maxRange: 500
+addWaypoint_target_mapMustBeReachable: true
+
+
 [hiddenAction_goHeal]
 #autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1 OLD
-autoTrigger: if self.hp() < self.maxHp/1 and self.isControlledByAI()
+autoTrigger: if self.hp() < self.maxHp/1.5 and self.isControlledByAI()
 requireConditional: if self.isControlledByAI()
+
+clearActiveWaypoint: true
+addWaypoint_prepend: true
+
 addWaypoint_type: loadInto
 addWaypoint_maxTime: 60s
 addWaypoint_target_nearestUnit_tagged: buddhist_temple
 addWaypoint_target_nearestUnit_team: own
 addWaypoint_target_nearestUnit_maxRange: 5000
-#addWaypoint_target_mapMustBeReachable: true
+addWaypoint_target_mapMustBeReachable: true
 debugMessage: "Hp.Low"
 
 [hiddenAction_unloadTemple]
 autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI()
-startUnloadingTransport: true
+requireConditional: if self.isControlledByAI()
+disconnectFromParent: true
 #resetCustomTimer: true
 
 
@@ -162,7 +175,7 @@ addTransportedUnits:true
 autoTriggerOnEvent: killedAnyUnit
 setUnitMemory: Rank=memory.Rank+1
 requireConditional: if (self.kills() >=${killsPerRank}+memory.Rank*${killsPerRank}) and memory.Rank < ${maxRank}
-setUnitStats: armour+=3.5, maxHp+=5
+setUnitStats: armour+=4, maxHp+=8, hp+=10
 attachments_addNewUnits: lvlup1
 
 ### UNUSED CODES ###
@@ -232,6 +245,6 @@ createWhenOffscreen: false
 ifSpawnFailsEmitEffects: dsound06
 [effect_dsound06]
 life: 200
-spawnChance: 1
+spawnChance: 0.05
 alsoPlaySound: ROOT:audio\pain\rps5.wav
 createWhenOffscreen: false
