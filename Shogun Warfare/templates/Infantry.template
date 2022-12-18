@@ -1,23 +1,19 @@
-### Looking for people, Discord Satobi#4236 ###
-
 [core]
 class: CustomUnitMetadata
 tags: infantry
 isBio: false
 isBug: false
 explodeOnDeath: false
-effectOnDeath: blood*10
 soundOnNewSelection: ROOT:audio\click1.wav
 
 selfRegenRate: 0.01
 
-effectOnDeath: CUSTOM:dsound01
+effectOnDeath: CUSTOM:dsound01, blood*3
 @memory Rank: float
 
 fogOfWarSightRange: 10
+softCollisionOnAll: 1
 
-#soundOnDeath: ROOT:audio\wilhelmScream.ogg
-#copyFrom: ROOT:ui\health.bar
 
 ### AI ACTION GOES HERE ###
 #[action_infantry_icon]
@@ -43,21 +39,50 @@ fogOfWarSightRange: 10
 
 
 [hiddenAction_cantReach]
-autoTrigger: if not self.isOverPassableTile() and self.isControlledByAI()
+autoTrigger: if self.isInWater() and self.isControlledByAI()
 addWaypoint_type: loadInto
-addWaypoint_target_nearestUnit_tagged: boat
-addWaypoint_target_nearestUnit_maxRange: 500
-addWaypoint_target_mapMustBeReachable: true
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
+addWaypoint_target_nearestUnit_maxRange: 1000
+addWaypoint_target_mapMustBeReachable: false
+#clearActiveWaypoint: true
+#addWaypoint_prepend: true
 
+
+#[hiddenAction_notMoving]
+#autoTrigger: if not self.isMoving() and self.isControlledByAI() and self.customTimer(laterThanSeconds=20) and not self.tags(includes='peasant')
+#addWaypoint_type: attackMove
+#addWaypoint_target_nearestUnit_team: enemy
+#addWaypoint_target_nearestUnit_tagged: infantry, lightinfantry, heavy, heavyinfantry
+#addWaypoint_target_nearestUnit_maxRange: 2500
+#addWaypoint_target_mapMustBeReachable: true
+#addWaypoint_maxTime: 60s
+
+
+#[hiddenAction_cantReach]
+#autoTrigger: if not self.hasActiveWaypoint(type='') and self.isControlledByAI()
+#addWaypoint_prepend: true
+#addWaypoint_type: loadInto
+#addWaypoint_target_nearestUnit_team: own
+#addWaypoint_target_nearestUnit_tagged: boat, heavy_bune
+#addWaypoint_target_nearestUnit_maxRange: 1000
+#addWaypoint_target_mapMustBeReachable: true
+#addWaypoint_maxTime: 30s
+#resetCustomTimer: true
+
+#[hiddenAction_cantReach] OLD
+#autoTrigger: if not self.isOverPassableTile() and self.isControlledByAI()
+#addWaypoint_type: loadInto
+#addWaypoint_target_nearestUnit_tagged: boat
+#addWaypoint_target_nearestUnit_maxRange: 500
+#addWaypoint_target_mapMustBeReachable: true
 
 [hiddenAction_goHeal]
 #autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1 OLD
-autoTrigger: if self.hp() < self.maxHp/1.5 and self.isControlledByAI()
+autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI()
 requireConditional: if self.isControlledByAI()
-
 clearActiveWaypoint: true
 addWaypoint_prepend: true
-
 addWaypoint_type: loadInto
 addWaypoint_maxTime: 60s
 addWaypoint_target_nearestUnit_tagged: buddhist_temple
@@ -67,7 +92,7 @@ addWaypoint_target_mapMustBeReachable: true
 debugMessage: "Hp.Low"
 
 [hiddenAction_unloadTemple]
-autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI()
+autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
 requireConditional: if self.isControlledByAI()
 disconnectFromParent: true
 #resetCustomTimer: true
@@ -96,15 +121,16 @@ movementEffectRate: 20
 
 [effect_blood]
 attachedToUnit:false
-life:300
+life:150
 physics:true
-scaleFrom:1
-scaleTo:0.5
+scaleFrom:2
+scaleTo:1
 xSpeedRelativeRandom: 0.6
 ySpeedRelativeRandom: 0.6
-hSpeed:1
+hSpeed:2
 image:ROOT:images\blood.png
 drawUnderUnits:false
+alpha: 1.5
 
 [effect_chat1]
 attachedToUnit:false

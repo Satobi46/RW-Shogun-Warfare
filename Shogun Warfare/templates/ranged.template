@@ -2,12 +2,12 @@
 
 [hiddenAction_attack_attacker]
 resetCustomTimer: true
-autoTrigger: if self.hasTakenDamage(withinSeconds=1) and self.isControlledByAI()
+autoTrigger: if self.hasTakenDamage(withinSeconds=2) and self.isControlledByAI()
 requireConditional: if self.isControlledByAI()
 addWaypoint_type: attackMove
 addWaypoint_target_nearestUnit_team: enemy	
-addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon, heavy, bow, melee, cavalry
-addWaypoint_target_nearestUnit_maxRange: 100
+addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon, heavy, bow, melee, cavalry, heavy, heavyinfantry
+addWaypoint_target_nearestUnit_maxRange: 180
 addWaypoint_target_mapMustBeReachable: true
 
 [hiddenAction_findtowerTower]
@@ -52,10 +52,11 @@ life: 70
 spawnChance: 1
 color: #ffffff
 alpha: 1
-physics: false
 fadeOut: true
 scaleFrom: 1
-scaleTo: 0.2
+scaleTo: 1
 priority: low
 xSpeedRelative: 0.1
 alwayStartDirAtZero: true
+
+physics: false

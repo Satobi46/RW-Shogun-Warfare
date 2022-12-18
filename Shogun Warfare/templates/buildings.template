@@ -9,6 +9,9 @@ teamColorsOnTurret: true
 icon_build: icon.png
 icon_zoomed_out: icon.png
 
+hideScorchMark: true
+#soundOnDeath: 
+
 [action_building_icon]
 pos: 0.1
 displayType: upgrade
