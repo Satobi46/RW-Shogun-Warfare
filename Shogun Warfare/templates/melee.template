@@ -2,7 +2,7 @@
 
 [hiddenAction_attack_attacker]
 resetCustomTimer: true
-autoTrigger: if self.hasTakenDamage(withinSeconds=2) and self.isControlledByAI()
+autoTrigger: if self.hasTakenDamage(laterThanSeconds=2) and self.isControlledByAI()
 requireConditional: if self.isControlledByAI()
 addWaypoint_type: attackMove
 addWaypoint_target_nearestUnit_team: enemy	
@@ -32,7 +32,6 @@ scaleTo: 1
 priority: low
 xSpeedRelative: 0.1
 alwayStartDirAtZero: true
-
 physics: false
 
 [effect_effect2]

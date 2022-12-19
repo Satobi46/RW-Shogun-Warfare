@@ -1,0 +1,93 @@
+[core]
+copyFrom:ROOT:buildings.template
+class:CustomUnitMetadata
+name:
+displayText:
+displayDescription:
+
+
+isPickableStartingUnit:true
+numBitsOnDeath: 5
+selfRegenRate: 0.1
+price: gold=100, wood=100
+maxHp: 8000
+mass: 30000
+displayFootprint: -2,-2,1,1
+footprint: -2,-2,1,1
+constructionFootprint: -3,-3,2,2
+buildingToFootprintOffsetX: 0
+buildingToFootprintOffsetY: 0
+techLevel: 1
+buildSpeed: 5s
+radius: 40
+displayRadius: 40
+isBio: false
+isBuilding: true
+generation_resources: gold=1, wood=1, rice=1
+generation_delay: 40
+exit_x:0
+exit_y:-10
+[graphics]
+total_frames: 1
+icon_build: image.png
+image: image.png
+image_back: image.png
+image_wreak: image.png
+image_shadow: shadow.png
+shadowOffsetX: 0
+shadowOffsetY: 0
+[attack]
+canAttack: false
+canAttackFlyingUnits: false
+canAttackLandUnits:   false
+canAttackUnderwaterUnits: false
+[movement]
+movementType: NONE
+moveSpeed: 0
+[ai]
+buildPriority: 2
+[hiddenAction_resource]
+autoTriggerOnEvent: created
+[hiddenAction_ai_extra1]
+autoTrigger: if self.isControlledByAI()
+requireConditional: if self.isControlledByAI()
+addResources: gold=8, wood=8, rice=8
+[decal_circle]
+@copyFrom_skipThisSection: true
+[decal_castleImp]
+@define TimeAliveMultipler: 200
+@define scaleVariance: 0.01
+layer:shadow
+imageStack: ROOT:images\tcircle01.png*1
+imageScale: 0.3+cos(self.timeAlive()*${TimeAliveMultipler})*${scaleVariance}
+teamColors: true
+onlyWhenSelectedByAnyPlayer: true
+[decal_FLAGS020fC78KVK]
+layer:beforeUi
+order: 2
+imageStack:clanflag.png
+yOffsetRelative: 30
+onlyWhenSelectedByAnyPlayer: true
+
+[canBuild_0]
+name: setRally
+pos: 0
+[canBuild_1]
+name: peasant_ashigaru
+[canBuild_2]
+name: katana_ashigaru
+[canBuild_3]
+name: bow_ashigaru
+[canBuild_4]
+name: yari_ashigaru
+[canBuild_5]
+name: sashimono_ashigaru
+[canBuild_6]
+name: katana_ashigaru_exp
+isVisible: if self.isControlledByAI()
+[canBuild_7]
+name: bow_ashigaru_exp
+isVisible: if self.isControlledByAI()
+[canBuild_8]
+name: yari_ashigaru_exp
+isVisible: if self.isControlledByAI()

@@ -1,0 +1,108 @@
+0.32b3ad
+- Sometimes Ai melee Infantry Battles to Death instead of retreating and sometimes they retreat to join in a group.
+- Fixed all Description of Infantry Units and should be somewhat helpful and better now.
+- Units are pushed less when attacked and stop clipping to other units.
+- Ai Builds more Infantry units instead of expensive ones after some time in game.
+- Damage of Archer Towers are Increased to 30 from 15.
+- Heavy Bune now holds 32 slot of transport.
+- Rebalanced units stats.
+- Minor changes to sprites and effects.
+
+0.27c18ad
+- Fixed "Archer_Tower" attacking units farther away from it's max attack range and ignore units in it's range.
+- Added retreat to Ai Infantry on temple to heal when health falls below 50% of their current maxHp.
+- Temple now heals Instantly.
+- Armor of hero units increased to +8.
+- All Infantry units stats per level up increased to armour+4, maxHp+8, hp+10, per level up, up to maximum of 5.
+- Added additional sounds to melee and matchlock units.
+- Rebalanced most of imbalanced units.
+
+0.27c16ad 
+- Minor changes and resprites.
+- Balanced damage multiplier.
+- Fixed Ai healing.
+- Added different Death Sounds.
+
+v0.27c6ab
+- Fixed "buddhist temple" and Ai (Ai no longer just get stucked on the temple when trying to heal and Ai will unload automatically when at full health) also the pathfinding for the temple is made a bit better.
+- Fixed level-up system, now all Infantry Units will be able to level of 5 kills for each level up to maximum of 3 (each level increase units maxHp by5 and armour by 2).
+- The "Ricefield" will upgrade to "Golden Ricefield" after 10min in game.
+
+v0.27c3ab
+- Added Sashimono_Ashigaru Unit.
+- Locked Taked_Fire_Cavalry to Takeda Only.
+- Added simple levelup system for Infantry Units.
+
+v0.26c9b
+- Ai now trains a lot of Infantry units.
+- updated sprites to some units.
+- increased priority for ai building bow towers.
+- garrisoned bow ashigaru increased turn speed to 20.
+- peasant damage decreased to 5 from 15 and the damage multiplier to x5 from x3 for (structure, building, buildings, decoration).
+- monk healer regen rate decreased to 0.2 from 0.50.
+- mangonel damage multiplier increased to x3 from x2.4 (lightinfantry, infantry, buildings, structure, resources, base, structures).
+- tadakatsus tetsubo damage multiplier from buildings decreased to x0.5 from x2 and moveSpeed to 1 from 1.2.
+- "light cavalry and bow cavalry" units now have decreased damage to heavy infantry units by -x1.
+
+v0.11b 
+- Added 7 music OST from Total War: Shogun II.
+- Resprited Nodachi Samurai.
+- Re tagged all Infantry Units.
+
+v0.10c2b 
+- Added Nodachi Samurai
+- Resize radius of some buildings
+
+v0.10cb 
+- Added Buddhist Temple.
+- Added Naginata Marathon Monks.
+- Added Benkeis Blade.
+- Added Katana Ashigaru or Loan Sword Ashigaru.
+- Changed boat/ship action of land so that when they are damaged on open land they will automatically unload with units and not just ignore them or else they just get killed with the boat.
+- Resources Goldmine/Lumbercamp/Ricefield now have vanilla destroy effects and not just get deleted out of nowhere. - thanks to the help of Atatra and ZetterZet.
+
+v0.9cb
+- All boats are now required to have Infantry or cavalry tags, to stop siege and big land units from loading into transports.
+- New Projectile Style and Fixed Mangonel and European Cannons projectile and new Icons for them.
+- Monk healer is now Better at giving medicine.
+
+v0.7cb 
+- Added Samurai School (Not Coded Yet)
+- Fixed all floating damage numbers explode projectile.
+- New Melee and Range Templates for Effects and Projectiles.
+- Remove unnecessary codes from garrisoned bow_ashigaru.
+- New AI action for Melee and Range:
+if taken damage and controlled by AI it will attack the nearest enemy target to stop AI from attack moving enemies from the other island and fight the guy near it, instead of getting killed in a dum wae.
+
+v0.7b
+- Added new Infantry units: Monk Healer, Bow Samurai and Naginata Warrior Monk.
+- Added Archery Dojo (Not Coded Yet.)
+- All building footprints are now fixed and aligned to sprites correctly.
+- Remove a lot of useless action code on bow_ashigaru and made it better.
+- Added Infantry Chatter Effect newWaypoint on Peasant Ashigaru by AI or Player.
+
+v0.6cb
+- Remove most unnecessary [Action] codes from bowkobaya, heavybune and tradeship.
+- Recoded bow_ashigaru unit and remove unnecessary codes too replaced with better pathfinding of archer towers for the Ai.
+- New 2 Units: Naginata Samurai and Naginata Warrior Monk both are melee spear.
+- Replaced @tree with a very nice looking cherry blossom tree and changed it's all behavior though there is only one current tree, it has some special effects like falling leaves.
+- Boats and Ships: Ai now unload all units when attacked on [open land] by a melee projectile with [tag] on all melee units.
+- Added Infantry.template that ultimately reduce lag probably (but I'm very sure it will for mobile) for all current Infantry and Melee.template for used in other stuff like [tag].
+
+v0.5cb
+- Added Siege Workshop for Siege units training.
+- Remove unnecessary codes on tradeship.
+
+v0.4b
+- Added european_cannons.
+- Fixed bow_ashigaru pathfinding for towers.
+- Recoded archer_tower and added attached 1 additional bow_ashigaru_garrison unit on creation.
+
+v0.3b 
+- Added infantry unit icons.
+- Added new unit Bomb Thrower and Heavy Cavalry.
+- Resprited the boats and added a peasant rower sprite.
+- Added Barracks Building for Training Infantry instead of main hall.
+- Added glowing spinning circle decal on resource deposits.
+- Offsetted resource icon on left.
+- Remove walls and was replaced by a lantern decoration.

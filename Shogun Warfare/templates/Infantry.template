@@ -201,7 +201,7 @@ addTransportedUnits:true
 autoTriggerOnEvent: killedAnyUnit
 setUnitMemory: Rank=memory.Rank+1
 requireConditional: if (self.kills() >=${killsPerRank}+memory.Rank*${killsPerRank}) and memory.Rank < ${maxRank}
-setUnitStats: armour+=4, maxHp+=8, hp+=10
+setUnitStats: armour+=2, maxHp+=8, hp+=10
 attachments_addNewUnits: lvlup1
 
 ### UNUSED CODES ###
