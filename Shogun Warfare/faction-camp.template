@@ -91,3 +91,9 @@ isVisible: if self.isControlledByAI()
 [canBuild_8]
 name: yari_ashigaru_exp
 isVisible: if self.isControlledByAI()
+
+
+#[hiddenAction_yearCalendar]
+#autoTriggerOnEvent: created
+#isActive:true
+#addResources:year=1

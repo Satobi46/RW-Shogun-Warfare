@@ -1,0 +1,21 @@
+[hiddenAction_armorBuff]
+autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
+setUnitStats: armour=3
+spawnEffects: 1
+
+[effect_1]
+createWhenOffscreen: false
+createWhenZoomedOut: false
+spawnChance:0.2
+attachedToUnit:true
+life:150
+#physics:true
+scaleFrom:0.5
+scaleTo:0.2
+#hOffset: 5
+#yOffsetRelative: 20
+yOffsetAbsolute: -15
+#ySpeedAbsolute: -0.5
+alwayStartDirAtZero: true
+image:ROOT:images\chat1.png
+drawUnderUnits:false

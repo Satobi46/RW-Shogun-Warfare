@@ -7,7 +7,6 @@ displayName: Gold
 hidden:false
 priority: 1
 displayColor: #DE7500
-
 displayNameShort: gold
 displayWhenZero: true
 iconImageUseInText: true
@@ -18,7 +17,6 @@ displayName: Wood
 hidden:false
 priority: 1
 displayColor: #d15700
-
 displayNameShort: wood
 displayWhenZero: true
 iconImageUseInText: true
@@ -29,9 +27,9 @@ displayName: Rice
 hidden:false
 priority: 1
 displayColor: #ffe393
-
 displayNameShort: rice
 displayWhenZero: true
 iconImageUseInText: true
+
 
 

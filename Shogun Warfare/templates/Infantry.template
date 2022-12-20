@@ -5,15 +5,13 @@ isBio: false
 isBug: false
 explodeOnDeath: false
 soundOnNewSelection: ROOT:audio\click1.wav
-
 selfRegenRate: 0.01
-
 effectOnDeath: CUSTOM:dsound01, blood*3
-@memory Rank: float
-
 fogOfWarSightRange: 10
 softCollisionOnAll: 1
 
+copyFrom: ROOT:\templates\buffs.template
+@memory Rank: float
 
 ### AI ACTION GOES HERE ###
 #[action_infantry_icon]
@@ -37,17 +35,13 @@ softCollisionOnAll: 1
 #convertTo: lvl1_unit
 #convertTo_keepCurrentTags: true
 
-
-[hiddenAction_cantReach]
-autoTrigger: if self.isInWater() and self.isControlledByAI()
-addWaypoint_type: loadInto
-addWaypoint_target_nearestUnit_team: own
-addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
-addWaypoint_target_nearestUnit_maxRange: 1000
-addWaypoint_target_mapMustBeReachable: false
-#clearActiveWaypoint: true
-#addWaypoint_prepend: true
-
+#[hiddenAction_cantReach]
+#autoTrigger: if self.isInWater() and self.isControlledByAI()
+#addWaypoint_type: loadInto
+#addWaypoint_target_nearestUnit_team: own
+#addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
+#addWaypoint_target_nearestUnit_maxRange: 1000
+#addWaypoint_target_mapMustBeReachable: false
 
 #[hiddenAction_notMoving]
 #autoTrigger: if not self.isMoving() and self.isControlledByAI() and self.customTimer(laterThanSeconds=20) and not self.tags(includes='peasant')
@@ -57,7 +51,6 @@ addWaypoint_target_mapMustBeReachable: false
 #addWaypoint_target_nearestUnit_maxRange: 2500
 #addWaypoint_target_mapMustBeReachable: true
 #addWaypoint_maxTime: 60s
-
 
 #[hiddenAction_cantReach]
 #autoTrigger: if not self.hasActiveWaypoint(type='') and self.isControlledByAI()
@@ -76,6 +69,16 @@ addWaypoint_target_mapMustBeReachable: false
 #addWaypoint_target_nearestUnit_tagged: boat
 #addWaypoint_target_nearestUnit_maxRange: 500
 #addWaypoint_target_mapMustBeReachable: true
+
+#[hiddenAction_ifTargetNotReachable]
+#autoTrigger: if self.isControlledByAI() and distanceBetween(self, activeWaypointTarget) < 100 and self.isOverwater()
+#clearActiveWaypoint:true
+#addWaypoint_prepend:true
+#addWaypoint_type: loadInto
+#addWaypoint_target_nearestUnit_team: own
+#addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
+#addWaypoint_target_nearestUnit_maxRange: 1000
+
 
 [hiddenAction_goHeal]
 #autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1 OLD
@@ -146,8 +149,6 @@ drawUnderUnits:false
 
 
 #### >>> LEVEL UP CODE <<< ####
-
-
 [attachment_slo11]
 x:-10
 y:0
@@ -194,7 +195,6 @@ canBeAttackedAndDamaged:false
 setDrawLayerOnTop:true
 addTransportedUnits:true
 
-
 [hiddenAction_RankUp1]
 @define killsPerRank: 5
 @define maxRank: 5
@@ -222,6 +222,7 @@ attachments_addNewUnits: lvlup1
 ### SHADOW WITH TEAM COLOR ###
 [decal_teamShadow]
 imageStack: ROOT:images\teamShadow4.png
+#imageStack: ROOT:images\shadow.png
 imageScale: 1
 #frame_width: 24
 #frame_height: 24
@@ -236,7 +237,6 @@ layer: shadow
 alpha: 0.5
 onlyWhileAlive: true
 onlyWithZoomLevelOrMore: 0.5
-
 
 ### SFX ###
 [effect_dsound01]
@@ -271,6 +271,6 @@ createWhenOffscreen: false
 ifSpawnFailsEmitEffects: dsound06
 [effect_dsound06]
 life: 200
-spawnChance: 0.05
+spawnChance: 1
 alsoPlaySound: ROOT:audio\pain\rps5.wav
 createWhenOffscreen: false
