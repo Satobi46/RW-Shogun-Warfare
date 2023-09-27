@@ -10,6 +10,8 @@ effectOnDeath: CUSTOM:dsound01, blood*3
 fogOfWarSightRange: 10
 softCollisionOnAll: 1
 
+shieldRenderRadius: 10
+
 copyFrom: ROOT:\templates\buffs.template
 @memory Rank: float
 
@@ -149,51 +151,25 @@ drawUnderUnits:false
 
 
 #### >>> LEVEL UP CODE <<< ####
-[attachment_slo11]
-x:-10
-y:0
-isVisible:true
-isUnselectable:true
-canAttack:false
-canBeAttackedAndDamaged:false
-setDrawLayerOnTop:true
-addTransportedUnits:true
-[attachment_slo22]
-x:0
-y:0
-isVisible:true
-isUnselectable:true
-canAttack:false
-canBeAttackedAndDamaged:false
-setDrawLayerOnTop:true
-addTransportedUnits:true
-[attachment_slo33]
-x:10
-y:0
-isVisible:true
-isUnselectable:true
-canAttack:false
-canBeAttackedAndDamaged:false
-setDrawLayerOnTop:true
-addTransportedUnits:true
-[attachment_slo44]
-x:6
-y:-10
-isVisible:true
-isUnselectable:true
-canAttack:false
-canBeAttackedAndDamaged:false
-setDrawLayerOnTop:true
-addTransportedUnits:true
-[attachment_slo55]
-x:-6
-y:-10
-isVisible:true
-isUnselectable:true
-canAttack:false
-canBeAttackedAndDamaged:false
-setDrawLayerOnTop:true
-addTransportedUnits:true
+
+#[attachment_slo11] ### Old Attachments of Star Decals Not Used###
+#x:-10
+#y:0
+#isVisible:true
+#isUnselectable:true
+#canAttack:false
+#canBeAttackedAndDamaged:false
+#setDrawLayerOnTop:true
+#addTransportedUnits:true
+#[attachment_slo22]
+#x:0
+#y:0
+#isVisible:true
+#isUnselectable:true
+#canAttack:false
+#canBeAttackedAndDamaged:false
+#setDrawLayerOnTop:true
+#addTransportedUnits:true
 
 [hiddenAction_RankUp1]
 @define killsPerRank: 5
@@ -201,8 +177,59 @@ addTransportedUnits:true
 autoTriggerOnEvent: killedAnyUnit
 setUnitMemory: Rank=memory.Rank+1
 requireConditional: if (self.kills() >=${killsPerRank}+memory.Rank*${killsPerRank}) and memory.Rank < ${maxRank}
-setUnitStats: armour+=2, maxHp+=8, hp+=10
-attachments_addNewUnits: lvlup1
+setUnitStats: armour+=3, maxHp+=5, hp+=5
+###attachments_addNewUnits: lvlup1 ### old add-attachments (do not use)###
+
+[decal_rank1]
+layer:shadow
+imageStack: ROOT:images\star1.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+imageScale: 1
+xOffsetAbsolute:0
+yOffsetAbsolute:-20
+isVisible: if self.kills() >=5
+onlyWhileAlive: true
+[decal_rank2]
+layer:shadow
+imageStack: ROOT:images\star1.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+imageScale: 1
+xOffsetAbsolute:-10
+yOffsetAbsolute:-20
+isVisible: if self.kills() >=10
+onlyWhileAlive: true
+[decal_rank3]
+layer:shadow
+imageStack: ROOT:images\star1.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+imageScale: 1
+xOffsetAbsolute:10
+yOffsetAbsolute:-20
+isVisible: if self.kills() >=15
+onlyWhileAlive: true
+[decal_rank4]
+layer:shadow
+imageStack: ROOT:images\star1.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+imageScale: 1
+xOffsetAbsolute:5
+yOffsetAbsolute:-30
+isVisible: if self.kills() >=20
+onlyWhileAlive: true
+[decal_rank5]
+layer:shadow
+imageStack: ROOT:images\star1.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+imageScale: 1
+xOffsetAbsolute:-5
+yOffsetAbsolute:-30
+isVisible: if self.kills() >=25
+onlyWhileAlive: true
 
 ### UNUSED CODES ###
 #setUnitStats: (Insert your stat increases here, ex. shootDelayMultiplier+=0.1, does 10% faster shooting per Rank)
@@ -221,11 +248,8 @@ attachments_addNewUnits: lvlup1
 
 ### SHADOW WITH TEAM COLOR ###
 [decal_teamShadow]
-imageStack: ROOT:images\teamShadow4.png
-#imageStack: ROOT:images\shadow.png
+image: ROOT:images\teamShadow4.png
 imageScale: 1
-#frame_width: 24
-#frame_height: 24
 frame_width: 32
 frame_height: 32
 teamColors: true
@@ -237,6 +261,19 @@ layer: shadow
 alpha: 0.5
 onlyWhileAlive: true
 onlyWithZoomLevelOrMore: 0.5
+
+[decal_selectionINF]
+image: ROOT:images\select2.png
+imageScale: 1.5
+frame_width: 16
+frame_height: 16
+teamColors: false
+alwaysStartDirAtZero: true
+basePosition: self
+alpha: 1
+onlyWhileAlive: true
+onlyWhenSelectedByAnyPlayer:true
+
 
 ### SFX ###
 [effect_dsound01]

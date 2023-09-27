@@ -22,6 +22,8 @@ thumbnail: thumbnail.png
 Credits and Special thanks to:
 SioxerNikita and ZetterZet for helping me so much!
 
+minVersion: 1.15p11
+
 [music]
 sourceFolder: music
 whenUsingUnitsFromThisMod_playExclusively: true

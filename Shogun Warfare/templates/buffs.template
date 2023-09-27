@@ -1,21 +1,61 @@
-[hiddenAction_armorBuff]
-autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
-setUnitStats: armour=3
-spawnEffects: 1
 
-[effect_1]
+#[hiddenAction_buff00AD]
+#autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
+#setUnitStats: armour+=5
+
+
+[hiddenAction_armorBuff]
+autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100) and not self.tags(includes="katana_hero") and self.tags(includes="bow_hero") and self.tags(includes="yari_hero")
+setUnitStats: armour=+5
+resetCustomTimer: true
+[hiddenAction_armorBuffgone]
+autoTrigger: if self.numberOfUnitsInTeam(lessThan=1, withTag='monk_healer', withinRange=100) and not self.tags(includes="katana_hero") and self.tags(includes="bow_hero") and self.tags(includes="yari_hero")
+resetUnitStats: true
+
+
+[hiddenAction_tfcSkill01AI]
+autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry")
+requireConditional: if self.isControlledByAI()
+setUnitStats: moveSpeed=3.4
+clearActiveWaypoint: true
+addWaypoint_prepend: true
+addWaypoint_type: loadInto
+addWaypoint_maxTime: 60s
+addWaypoint_target_nearestUnit_tagged: buddhist_temple
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_nearestUnit_maxRange: 5000
+addWaypoint_target_mapMustBeReachable: true
+debugMessage: "Hp.Low.TakedaFC"
+[hiddenAction_tfcSkillFullHP]
+autoTrigger: if self.hp() > self.maxHp/2 and self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry")
+requireConditional: if self.isControlledByAI()
+setUnitStats: moveSpeed=2
+[hiddenAction_tfcSkill01Unload]
+autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
+requireConditional: if self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry")
+disconnectFromParent: true
+
+
+[effect_0]
 createWhenOffscreen: false
 createWhenZoomedOut: false
 spawnChance:0.2
 attachedToUnit:true
 life:150
-#physics:true
 scaleFrom:0.5
 scaleTo:0.2
-#hOffset: 5
-#yOffsetRelative: 20
 yOffsetAbsolute: -15
-#ySpeedAbsolute: -0.5
 alwayStartDirAtZero: true
-image:ROOT:images\chat1.png
+image:ROOT:images\armorBuff1.png
 drawUnderUnits:false
+
+[decal_circle]
+@copyFrom_skipThisSection: true
+[decal_castleImp]
+layer:shadow
+imageStack: ROOT:images\armorBuff5.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+yOffsetAbsolute: 18
+imageScale: 0.5
+isVisible: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
