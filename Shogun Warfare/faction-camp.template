@@ -82,6 +82,8 @@ name: bow_ashigaru
 name: yari_ashigaru
 [canBuild_5]
 name: sashimono_ashigaru
+
+### Extra AI Controlled units to increase singeleplayer difficulty ###
 [canBuild_6]
 name: katana_ashigaru_exp
 isVisible: if self.isControlledByAI()
@@ -93,7 +95,7 @@ name: yari_ashigaru_exp
 isVisible: if self.isControlledByAI()
 
 
-#[hiddenAction_yearCalendar]
+#[hiddenAction_yearCalendar] ## will be used later in game ##
 #autoTriggerOnEvent: created
 #isActive:true
 #addResources:year=1

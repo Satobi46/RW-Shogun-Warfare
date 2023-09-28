@@ -12,8 +12,8 @@ icon_zoomed_out: icon.png
 
 [action_infantry_icon]
 pos: 0.1
-displayType: upgrade
+displayType: infoOnlyNoBox
 iconImage: icon.png
 iconExtraImage: icon.png
 isVisible: true
-buildSpeed: 0
+isActive: false

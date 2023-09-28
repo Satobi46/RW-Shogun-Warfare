@@ -12,7 +12,8 @@ softCollisionOnAll: 1
 
 shieldRenderRadius: 10
 
-copyFrom: ROOT:\templates\buffs.template
+copyFrom: ROOT:\templates\buffs.template, ROOT:\templates\effects.template
+
 @memory Rank: float
 
 ### AI ACTION GOES HERE ###
@@ -94,7 +95,7 @@ addWaypoint_target_nearestUnit_tagged: buddhist_temple
 addWaypoint_target_nearestUnit_team: own
 addWaypoint_target_nearestUnit_maxRange: 5000
 addWaypoint_target_mapMustBeReachable: true
-debugMessage: "Hp.Low"
+#debugMessage: "Hp.Low - Finding temple to heal!"
 
 [hiddenAction_unloadTemple]
 autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
@@ -181,7 +182,7 @@ setUnitStats: armour+=3, maxHp+=5, hp+=5
 ###attachments_addNewUnits: lvlup1 ### old add-attachments (do not use)###
 
 [decal_rank1]
-layer:shadow
+layer:beforeUI
 imageStack: ROOT:images\star1.png*1
 teamColors: true
 alwaysStartDirAtZero: true
@@ -191,7 +192,7 @@ yOffsetAbsolute:-20
 isVisible: if self.kills() >=5
 onlyWhileAlive: true
 [decal_rank2]
-layer:shadow
+layer:beforeUI
 imageStack: ROOT:images\star1.png*1
 teamColors: true
 alwaysStartDirAtZero: true
@@ -201,7 +202,7 @@ yOffsetAbsolute:-20
 isVisible: if self.kills() >=10
 onlyWhileAlive: true
 [decal_rank3]
-layer:shadow
+layer:beforeUI
 imageStack: ROOT:images\star1.png*1
 teamColors: true
 alwaysStartDirAtZero: true
@@ -211,7 +212,7 @@ yOffsetAbsolute:-20
 isVisible: if self.kills() >=15
 onlyWhileAlive: true
 [decal_rank4]
-layer:shadow
+layer:beforeUI
 imageStack: ROOT:images\star1.png*1
 teamColors: true
 alwaysStartDirAtZero: true
@@ -221,7 +222,7 @@ yOffsetAbsolute:-30
 isVisible: if self.kills() >=20
 onlyWhileAlive: true
 [decal_rank5]
-layer:shadow
+layer:beforeUI
 imageStack: ROOT:images\star1.png*1
 teamColors: true
 alwaysStartDirAtZero: true
@@ -275,7 +276,7 @@ onlyWhileAlive: true
 onlyWhenSelectedByAnyPlayer:true
 
 
-### SFX ###
+### SFX Sound Effects on Death ###
 [effect_dsound01]
 life: 200
 spawnChance: 0.05

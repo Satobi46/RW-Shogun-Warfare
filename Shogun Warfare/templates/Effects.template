@@ -1,3 +1,45 @@
 ### NONE - Will be used in later or futuer. ###
 
+[effect_goldCoins]
+image: ROOT:images\goldCoin.png
+attachedToUnit: false
+drawUnderUnits: false
+life: 100
+spawnChance: 1
+alpha: 1
+createWhenOffscreen: false
+createWhenZoomedOut: false
+priority: high
+alwayStartDirAtZero: true
+dirSpeed: 5
+xSpeedRelative:0.3
+ySpeedRelative:0.3
+physics: true
+physicsGravity: 1
+hSpeed: 3
+dirOffsetRandom: -90
+fadeOut: false
+scaleFrom: 0.7
+scaleTo: 0.7
+priority: low
+alwayStartDirAtZero: true
+
+[effect_bloodLustEffect]
+image: ROOT:images\bl02.png
+attachedToUnit: false
+drawUnderUnits: true
+alwayStartDirAtZero: true
+life: 50
+spawnChance: 1
+alpha: 1
+priority: high
+alwayStartDirAtZero: true
+fadeOut: true
+scaleFrom:1.5
+scaleTo:1.5
+priority: low
+alwayStartDirAtZero: false
+ySpeedRelative:0
+yOffsetRelative: -4
+
 

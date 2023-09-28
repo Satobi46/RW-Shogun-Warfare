@@ -1,3 +1,5 @@
+ROOT:\templates\effects.template
+
 
 #[hiddenAction_buff00AD]
 #autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
@@ -5,16 +7,20 @@
 
 
 [hiddenAction_armorBuff]
-autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100) and not self.tags(includes="katana_hero") and self.tags(includes="bow_hero") and self.tags(includes="yari_hero")
+autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100) and not self.tags(includes="katana_hero") and not self.tags(includes="bow_hero") and not self.tags(includes="yari_hero")
 setUnitStats: armour=+5
-resetCustomTimer: true
 [hiddenAction_armorBuffgone]
 autoTrigger: if self.numberOfUnitsInTeam(lessThan=1, withTag='monk_healer', withinRange=100) and not self.tags(includes="katana_hero") and self.tags(includes="bow_hero") and self.tags(includes="yari_hero")
 resetUnitStats: true
 
 
+[hiddenAction_tfcSkill01Player]
+autoTrigger: if self.hp() < self.maxHp/2 and not self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry_bloodLust")
+requireConditional: if not self.isControlledByAI()
+setUnitStats: moveSpeed=3.4
+debugMessage: "Hp.Low.TakedaFC Player"
 [hiddenAction_tfcSkill01AI]
-autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry")
+autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry_bloodLust")
 requireConditional: if self.isControlledByAI()
 setUnitStats: moveSpeed=3.4
 clearActiveWaypoint: true
@@ -27,13 +33,22 @@ addWaypoint_target_nearestUnit_maxRange: 5000
 addWaypoint_target_mapMustBeReachable: true
 debugMessage: "Hp.Low.TakedaFC"
 [hiddenAction_tfcSkillFullHP]
-autoTrigger: if self.hp() > self.maxHp/2 and self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry")
+autoTrigger: if self.hp() > self.maxHp/2 and self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry_bloodLust")
 requireConditional: if self.isControlledByAI()
 setUnitStats: moveSpeed=2
 [hiddenAction_tfcSkill01Unload]
-autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
-requireConditional: if self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry")
+autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple") and self.tags(includes="takeda_fire_cavalry_bloodLust")
+requireConditional: if self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry_bloodLust")
 disconnectFromParent: true
+[decal_decalTfcSkill1]
+layer:shadow
+imageStack: ROOT:images\skill01.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+yOffsetAbsolute: -30
+imageScale: 0.6
+onlyWhileAlive: true
+isVisible: if self.hp() < self.maxHp/2 and self.tags(includes="takeda_fire_cavalry_bloodLust")
 
 
 [effect_0]
@@ -49,13 +64,15 @@ alwayStartDirAtZero: true
 image:ROOT:images\armorBuff1.png
 drawUnderUnits:false
 
+
 [decal_circle]
 @copyFrom_skipThisSection: true
-[decal_castleImp]
+[decal_monkBuffIcon]
 layer:shadow
 imageStack: ROOT:images\armorBuff5.png*1
 teamColors: true
 alwaysStartDirAtZero: true
+onlyWhileAlive: true
 yOffsetAbsolute: 18
 imageScale: 0.5
 isVisible: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
