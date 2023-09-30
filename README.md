@@ -8,3 +8,5 @@ This mod is a samurai era themed mod for Rusted Warfare which introduces samurai
 > **do not publish or distribute a copy of art assets, sprite or textures from this mod without permission from me.**
 
 If you want permissions you can do so by contacting me on my discord Satobi#4236. 
+
+https://repository-images.githubusercontent.com/544493480/68a4b63c-e16c-4f1e-a7a6-4e29b2d18f38
