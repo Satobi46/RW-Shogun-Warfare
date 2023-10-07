@@ -1,26 +1,26 @@
 ### RANGED DAMAGE NUMBERS AND ACTION GOES HERE ###
 
-[hiddenAction_attack_attacker]
-resetCustomTimer: true
-autoTrigger: if self.hasTakenDamage(laterThanSeconds=2) and self.isControlledByAI()
-requireConditional: if self.isControlledByAI()
-addWaypoint_type: attackMove
-addWaypoint_target_nearestUnit_team: enemy	
-addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon, heavy, bow, melee, cavalry, heavy, heavyinfantry
-addWaypoint_target_nearestUnit_maxRange: 180
-addWaypoint_target_mapMustBeReachable: true
+#[hiddenAction_attack_attacker]
+#resetCustomTimer: true
+#autoTrigger: if self.hasTakenDamage(laterThanSeconds=2) and self.isControlledByAI()
+#requireConditional: if self.isControlledByAI()
+#addWaypoint_type: attackMove
+#addWaypoint_target_nearestUnit_team: enemy	
+#addWaypoint_target_nearestUnit_tagged: infantry, archertower, tower, siegeweapons, siege, siegeweapon, heavy, bow, melee, cavalry, heavy, heavyinfantry
+#addWaypoint_target_nearestUnit_maxRange: 120
+#addWaypoint_target_mapMustBeReachable: true
 
-[hiddenAction_findtowerTower]
-resetCustomTimer: true
-autoTriggerOnEvent: created
-autoTrigger: if self.customTimer(laterThanSeconds=20) and self.isControlledByAI()
-requireConditional: if self.isControlledByAI()
-addWaypoint_type: loadInto
-addWaypoint_target_nearestUnit_team: own
-addWaypoint_target_nearestUnit_tagged: archertower_empty
-addWaypoint_target_nearestUnit_maxRange: 1500
-addWaypoint_target_mapMustBeReachable: true
-addWaypoint_maxTime: 30s
+#[hiddenAction_findtowerTower]
+#resetCustomTimer: true
+#autoTriggerOnEvent: created
+#autoTrigger: if self.customTimer(laterThanSeconds=20) and self.isControlledByAI()
+#requireConditional: if self.isControlledByAI()
+#addWaypoint_type: loadInto
+#addWaypoint_target_nearestUnit_team: own
+#addWaypoint_target_nearestUnit_tagged: archertower_empty
+#addWaypoint_target_nearestUnit_maxRange: 1500
+#addWaypoint_target_mapMustBeReachable: true
+#addWaypoint_maxTime: 30s
 
 ### TRANSPORT ###
 #[hiddenAction_deattached]

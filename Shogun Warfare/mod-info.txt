@@ -1,14 +1,17 @@
 [mod]
-title: Shogun Warfare II - The Rice of the Samurai
-description: Shogun Warfare II by: satobi. This mod is a samurai era themed mod for Rusted Warfare which introduces samurai units on the battlefield and rat infested ricefield. Be a local warlord in your area or a rice farmer, build settlements like rice field, lumber camp and gold mine to gain resources to build unstoppable and unstoppable samurai forces fight territory with swords, bows or blast em off with cannons or mangonels!
+title: Shogun Warfare: Rice of The Samurai
+description: Shogun Warfare - Is a samurai era civilization themed mod for Rusted Warfare which introduces savage and destructive samurai units on the battlefield and some few of those rat infested ricefield. Be a local warlord in your region or live a life like Gigachado rice farmer, build settlements like rice field, lumber camp and gold mine to gain resources and to build unstoppable, impenetrable, godlike samurai forces to fight your foes for your territory! fight with swords, bows or blast-em off to the space with cannons or mangonels!
 
-samurai with swords check ✓
-samurai with bows check ✓
-samurai in horses check ✓
-samurai in boats check ✓
-samurai with hand cannon check ✓
-samurai jack check ✓
-fat samurai in drip check ✓
+In this mod you are the General and the Daimyo and you can build structures and defend your fortress from hostile clans, conquer all other generals base and destroy them with glory, or you can control a horde of trained legendary samurai or super powerful siege weapons to destroy their castle and bring great victory to your people, all the choices is in your hands.
+
+-Samurai with Katana, Yari, Bows and attached with C4? check ✓
+-Samurai with loyalty implanted on their brains? check ✓
+-Samurai riding in horses or horses... horses riding in boats? check ✓
+-Samurai on boats with automatic self-defense? check ✓
+-A very relaxing or chaotic Samurai themed background music? check ✓
+-AI samurai that will burn your empire? check ✓
+-Japanese anime samurai in drip? check ✓
+
 
 Music Used:
 Shogun II: Total War OST by Jeff van Dyck
@@ -16,8 +19,9 @@ Artist: Jeff van Dyck / SEGA
 Release date: April 11, 2011
 minVersion: 1.15p9
 
-tags: units, katana, samurai, totalconversion, total conversion, joe, ricefield, asian, japanese, shogun, rice
+tags: units, katana, samurai, totalconversion, total-conversion, joe, ricefield, asian, japanese, shogun, rice
 thumbnail: thumbnail.png
+
 
 Credits and Special thanks to:
 SioxerNikita and ZetterZet for helping me so much!

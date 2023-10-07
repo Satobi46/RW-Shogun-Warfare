@@ -4,6 +4,7 @@ soundOnNewSelection: ROOT:audio\click1.wav
 
 [graphics]
 image_shield: ROOT:images\noshield.png
+icon_build:icon.png
 
 [decal_circle]
 basePosition: self.getOffsetRelative(diroffset=self.timeAlive()*50)
@@ -12,25 +13,33 @@ imageScale: 1.7
 frame_width: 32
 frame_height: 32
 teamColors: true
-
 onlyWithZoomLevelOrMore: 0.4
 onlyWhileActive: true
 onlyWhileAlive: true
-#onlyTeam: own
 teamColors: true
 layer: shadow
 alpha: 0.5
 
 [decal_selection]
-imageStack: ROOT:images\select.png*1
+imageStack: ROOT:images\select3.png*1
 imageScale: 2
 frame_width: 32
 frame_height: 32
+alpha: 0.5
 layer: beforeUI
 teamColors: true
 onlyWhenSelectedByAnyPlayer: true
 
-[hiddenAction_baseUnderAttack]
+[hiddenAction_baseUnderAttack1]
 resetCustomTimer: true
-autoTrigger: if self.hasTakenDamage(withinSeconds=1) and self.customTimer(laterThanSeconds=10)
-playSoundToPlayer: ROOT:audio\base_attack.ogg
+autoTrigger: if self.hasTakenDamage(withinSeconds=1) and self.customTimer(laterThanSeconds=5)
+playSoundToPlayer: ROOT:audio\scan01.ogg: 1
+
+[hiddenAction_killIfDefeat]
+autoTrigger: if self.numberOfUnitsInTeam(withTag='camp', lessThan=1)
+setResourcesWithLogic: hp=0
+
+
+#[ai]
+#lowPriorityTargetForOtherUnits: true
+

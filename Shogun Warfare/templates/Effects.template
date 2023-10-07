@@ -9,7 +9,6 @@ spawnChance: 1
 alpha: 1
 createWhenOffscreen: false
 createWhenZoomedOut: false
-priority: high
 alwayStartDirAtZero: true
 dirSpeed: 5
 xSpeedRelative:0.3
@@ -18,11 +17,36 @@ physics: true
 physicsGravity: 1
 hSpeed: 3
 dirOffsetRandom: -90
-fadeOut: false
+fadeOut: true
 scaleFrom: 0.7
 scaleTo: 0.7
 priority: low
+
+
+[effect_yeetedAshigaru]
+image: ROOT:images\yeetedUnit01.png
+attachedToUnit: false
+drawUnderUnits: false
+life: 200
+spawnChance: 1
+alpha: 1
+createWhenOffscreen: false
+createWhenZoomedOut: false
+priority: high
 alwayStartDirAtZero: true
+dirSpeed: 8
+physics: true
+physicsGravity: 1
+hSpeed: 4
+hOffsetRandom: 5
+dirOffsetRandom: -360
+fadeOut: true
+scaleFrom: 1
+scaleTo: 1
+teamColorRatio: 1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+
 
 [effect_bloodLustEffect]
 image: ROOT:images\bl02.png
@@ -41,5 +65,41 @@ priority: low
 alwayStartDirAtZero: false
 ySpeedRelative:0
 yOffsetRelative: -4
+
+
+[effect_effectSmokeLarge1]
+image: ROOT:images\smokeLarge.png
+priority: high
+drawUnderUnits: false
+life: 200
+alpha: 1
+scaleFrom: 3
+scaleTo: 5
+fadeOut: true
+hSpeed: 0.2
+attachedToUnit: false
+dirOffsetRandom: 40
+dirSpeedRandom: 0.5
+createWhenZoomedOut: false
+spawnChance: 1
+alsoPlaySound: ROOT:audio\explode\explode01.ogg: 0.5
+[effect_effectSiegeSmoke]
+image: ROOT:images\siegeSmoke.png
+priority:high
+drawUnderUnits:false
+life: 250
+alpha: 1
+scaleFrom: 5
+scaleTo: 1
+fadeOut: true
+hSpeed: 0
+physics: true
+attachedToUnit: false
+xSpeedRelativeRandom: 0.3
+ySpeedRelativeRandom: 0.3
+createWhenZoomedOut: false
+spawnChance: 1
+alsoPlaySound: ROOT:audio\explode\explode02.ogg: 3
+
 
 

@@ -1,0 +1,6 @@
+### RANGED DAMAGE NUMBERS AND ACTION GOES HERE ###
+
+[projectile_1]
+armourIgnoreAmount: -10
+#mutatorX_ifUnitWithTags: date_bulletproof_samurai, bulletproof
+#mutatorX_directDamageMultiplier: -0.5

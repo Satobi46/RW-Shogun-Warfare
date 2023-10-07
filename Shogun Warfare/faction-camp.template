@@ -1,14 +1,13 @@
 [core]
 copyFrom:ROOT:buildings.template
 class:CustomUnitMetadata
+tags: camp
 name:
 displayText:
 displayDescription:
-
-
 isPickableStartingUnit:true
-numBitsOnDeath: 5
-selfRegenRate: 0.1
+numBitsOnDeath: 10
+selfRegenRate: 0
 price: gold=100, wood=100
 maxHp: 8000
 mass: 30000
@@ -27,47 +26,83 @@ generation_resources: gold=1, wood=1, rice=1
 generation_delay: 40
 exit_x:0
 exit_y:-10
+
 [graphics]
-total_frames: 1
+total_frames: 6
 icon_build: image.png
 image: image.png
+icon_build:ROOT:images\iconFactionCamp.png
 image_back: image.png
-image_wreak: image.png
+image_wreak: baseRoof1.png
 image_shadow: shadow.png
+animation_idle_start: 0
+animation_idle_end: 5
+animation_idle_speed: 5
+animation_idle_pingPong: true
 shadowOffsetX: 0
 shadowOffsetY: 0
+drawLayer: bottom
+
 [attack]
 canAttack: false
 canAttackFlyingUnits: false
 canAttackLandUnits:   false
 canAttackUnderwaterUnits: false
+
 [movement]
 movementType: NONE
 moveSpeed: 0
+
 [ai]
 buildPriority: 2
+
 [hiddenAction_resource]
 autoTriggerOnEvent: created
-[hiddenAction_ai_extra1]
+[hiddenAction_aiExtraIncome]
 autoTrigger: if self.isControlledByAI()
-requireConditional: if self.isControlledByAI()
-addResources: gold=8, wood=8, rice=8
+addResources: wood=+15, gold=+15, rice=+15
+[hiddenAction_onDestroyed]
+autoTriggerOnEvent: destroyed
+spawnEffects: CUSTOM: destroyedCastle
+
 [decal_circle]
 @copyFrom_skipThisSection: true
 [decal_castleImp]
-@define TimeAliveMultipler: 200
-@define scaleVariance: 0.01
-layer:shadow
-imageStack: ROOT:images\tcircle01.png*1
-imageScale: 0.3+cos(self.timeAlive()*${TimeAliveMultipler})*${scaleVariance}
+layer: shadow
+order: 0
+imageStack: ROOT:images\tCircleCastle.png*1
+imageScale: 0.3
 teamColors: true
 onlyWhenSelectedByAnyPlayer: true
+#[decal_castleImp]
+#@define TimeAliveMultipler: 200
+#@define scaleVariance: 0.01
+#layer:shadow
+#imageStack: ROOT:images\tcircle01.png*1
+#imageScale: 0.3+cos(self.timeAlive()*${TimeAliveMultipler})*${scaleVariance}
+#teamColors: true
+#onlyWhenSelectedByAnyPlayer: true
 [decal_FLAGS020fC78KVK]
 layer:beforeUi
-order: 2
+order: 3
 imageStack:clanflag.png
 yOffsetRelative: 30
 onlyWhenSelectedByAnyPlayer: true
+[decal_roofBlock2]
+image: baseRoof2.png
+layer: beforeUI
+order: 2
+alpha: 0.2
+imageScale: 1
+teamColors: true
+isVisible: true
+[decal_roofBlock3]
+image: baseRoof1.png
+layer: beforeUI
+order: 2
+imageScale: 1
+teamColors: true
+isVisible: if self.numberOfUnitsInTeam(withTag='infantry', lessThan=1, withinRange=60)
 
 [canBuild_0]
 name: setRally
@@ -94,8 +129,33 @@ isVisible: if self.isControlledByAI()
 name: yari_ashigaru_exp
 isVisible: if self.isControlledByAI()
 
-
 #[hiddenAction_yearCalendar] ## will be used later in game ##
 #autoTriggerOnEvent: created
 #isActive:true
 #addResources:year=1
+### Victory / Defeated Sounds ###
+#[hiddenAction_baseOwnDefeated]
+#autoTriggerOnEvent: destroyed
+#playSoundToPlayer: ROOT:audio\defeat01.ogg: 1
+#debugMessage: [You have been destroyed!]
+#[hiddenAction_baseOwnVictory]
+#autoTrigger: if self.numberOfUnitsInEnemyTeam(withTag="camp") < 1
+#playSoundToPlayer: ROOT:audio\victory01.ogg: 1
+#debugMessage: [You are victorious!]
+
+[effect_destroyedCastle]
+image: ROOT:images\destroyed2.png
+priority: high
+drawUnderUnits: false
+life: 400
+alpha: 1
+scaleFrom: 0.3
+scaleTo: 0.3
+fadeOut: true
+hSpeed: 0.2
+attachedToUnit: true
+createWhenZoomedOut: true
+spawnChance: 100
+
+
+

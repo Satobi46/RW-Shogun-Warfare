@@ -1,17 +1,13 @@
-ROOT:\templates\effects.template
-
-
-#[hiddenAction_buff00AD]
-#autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
-#setUnitStats: armour+=5
-
+#ROOT:\templates\effects.template
 
 [hiddenAction_armorBuff]
-autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100) and not self.tags(includes="katana_hero") and not self.tags(includes="bow_hero") and not self.tags(includes="yari_hero")
-setUnitStats: armour=+5
-[hiddenAction_armorBuffgone]
-autoTrigger: if self.numberOfUnitsInTeam(lessThan=1, withTag='monk_healer', withinRange=100) and not self.tags(includes="katana_hero") and self.tags(includes="bow_hero") and self.tags(includes="yari_hero")
-resetUnitStats: true
+autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100) and not self.tags(includes='armorBuff')
+setUnitStats: armour+=5
+temporarilyAddTags: armorBuff
+[hiddenAction_armorBuffGone]
+autoTrigger: if self.numberOfUnitsInTeam(lessThan=1, withTag='monk_healer', withinRange=100) and self.tags(includes='armorBuff')
+setUnitStats: armour-=5
+temporarilyRemoveTags: armorBuff
 
 
 [hiddenAction_tfcSkill01Player]
@@ -19,6 +15,7 @@ autoTrigger: if self.hp() < self.maxHp/2 and not self.isControlledByAI() and sel
 requireConditional: if not self.isControlledByAI()
 setUnitStats: moveSpeed=3.4
 debugMessage: "Hp.Low.TakedaFC Player"
+onlyOneUnitAtATime: false
 [hiddenAction_tfcSkill01AI]
 autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry_bloodLust")
 requireConditional: if self.isControlledByAI()
