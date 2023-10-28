@@ -1,6 +1,11 @@
 [core]
 strictLevel: 0
 
+
+## Remove this, I have no idea what this does or if it's performat freindly ##
+autoTriggerCheckRate:every8Frames 
+
+
 [global_resource_gold]
 iconImage: ROOT:images\gold.png
 displayName: Gold
@@ -10,7 +15,7 @@ displayColor: #DE7500
 displayNameShort: gold
 displayWhenZero: true
 iconImageUseInText: true
-
+displayRoundedDown: true
 [global_resource_wood]
 iconImage: ROOT:images\wood.png
 displayName: Wood
@@ -20,7 +25,7 @@ displayColor: #d15700
 displayNameShort: wood
 displayWhenZero: true
 iconImageUseInText: true
-
+displayRoundedDown: true
 [global_resource_rice]
 iconImage: ROOT:images\rice.png
 displayName: Rice
@@ -30,6 +35,7 @@ displayColor: #ffe393
 displayNameShort: rice
 displayWhenZero: true
 iconImageUseInText: true
+displayRoundedDown: true
 
 
 

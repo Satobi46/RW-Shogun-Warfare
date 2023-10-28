@@ -1,4 +1,53 @@
-0.32b3ad
+
+v0.1b0256c
+
+- Added 2 new ships, The Nihon Maru and The Cannon Bune.
+- Added new Special Effects to the list.
+- Rework most of the AI codes and for peasants too.
+- Remove more the trash and unused codes.
+- Greatly nerfed resources rate of all resources.
+- Graphical reworks and other minor changes.
+
+New Musics Added:
+[noloop] 52Telecasterbob - 日本の伝統音楽
+[noloop] Eqler - Oni
+[noloop] Exyz - Satsuma
+[noloop] GRILLABEATS - Ronin
+[noloop] GRILLABEATS - Shakuhachi
+[noloop] Hyuman - JAPANLOVANIA 2
+[noloop] Hyuman - My War
+[noloop] Hyuman - Splatoon - SHAMISEN SISTERS
+[noloop] Senzo - Rengoku
+[noloop] ShogunF - Jigoku
+[noloop] ShogunF - Jigokuraku
+[noloop] The Only Thing I Know For Real - Traditional Japanese
+
+
+v0.1b0252c
+- New Naval Unit: Cannon Bune
+- New Infantry Unit:Flaming Ashigaru
+- Burn Debuff
+- Nerfed all resource types
+- Fixed most units codes
+
+v0.1b0252c
+- Graphical rework to most of the buildings and added some indoor decorations when near it.
+- Healer_Monk now gives the "+5 Armour_buff" to all own Infantry Units in 100 radius.
+- New Healthbar Decal by Sioxer.
+- Removed Pushforce to all Infantry units, Monk_Healer not included.
+- When a player is defeated, all of it's buildings and units will be destroyed as a result of destruction and they no longer have a place to go.
+- Some few QoL changes and AI fixes.
+- Monk Units not including "Healer Monk" are now locked only to Ikko-Ikki as Special
+Units from the Buddhist Temple.
+- Increased the healing rate of Healer Monk.
+- Increased Tetsubo's armour.
+- Reduced repair rate of peasants.
+- Increase Tier-2 Archer-Tower maximum health and increase cost to 200g and 100w.
+- Increased the radius of buildings at which it can be attacked or repaired.
+- Reduced the healing rate of the Buddhist Temple + Graphical rework
+- Sword School Graphical Rework
+
+v0.32b3ad
 - Sometimes Ai melee Infantry Battles to Death instead of retreating and sometimes they retreat to join in a group.
 - Fixed all Description of Infantry Units and should be somewhat helpful and better now.
 - Units are pushed less when attacked and stop clipping to other units.
@@ -8,7 +57,7 @@
 - Rebalanced units stats.
 - Minor changes to sprites and effects.
 
-0.27c18ad
+v0.27c18ad
 - Fixed "Archer_Tower" attacking units farther away from it's max attack range and ignore units in it's range.
 - Added retreat to Ai Infantry on temple to heal when health falls below 50% of their current maxHp.
 - Temple now heals Instantly.
@@ -17,7 +66,7 @@
 - Added additional sounds to melee and matchlock units.
 - Rebalanced most of imbalanced units.
 
-0.27c16ad 
+v0.27c16ad 
 - Minor changes and resprites.
 - Balanced damage multiplier.
 - Fixed Ai healing.

@@ -2,6 +2,10 @@
 strictLevel: 0
 soundOnNewSelection: ROOT:audio\click1.wav
 
+
+ignoreInUnitCapCalculation: false
+
+
 [graphics]
 image_shield: ROOT:images\noshield.png
 icon_build:icon.png

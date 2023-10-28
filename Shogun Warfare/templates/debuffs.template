@@ -1,0 +1,66 @@
+# ROOT:\templates\effects.template
+
+
+copyFrom: ROOT:\templates\effects.template
+
+
+# [hiddenAction_shallowWaterActive]
+# autoTrigger: if self.isOverwater() and not self.tags(includes='onShallowWater')
+# setUnitStats: moveSpeed-=1
+# temporarilyAddTags: onShallowWater
+# [hiddenAction_shallowWaterDisabled]
+# autoTrigger: if not self.isOverwater() and self.tags(includes='onShallowWater')
+# setUnitStats: moveSpeed+=1
+# temporarilyRemoveTags: notOnShallowWater
+
+
+[hiddenAction_burningDebuff]
+autoTriggerOnEvent: tookDamage(withTag="burningDebuff")
+temporarilyAddTags: burningDebuff
+[hiddenAction_burningDebuffBuff]
+autoTrigger: if self.tags(includes='burningDebuff')
+setUnitStats: selfRegenRate=-0.1
+
+
+
+[decal_BurningDecal]
+@define frame_start: 0
+@define frame_end: 2
+@define framesPerSec: 10
+imageStack: ROOT:images\flame01B.png
+# layer: beforeUI ### IDK WHY IT DOES NOT KILLED IF THIS LAYER IS DISABLED, BUT IT GIVE COOL LOOKING AFTER EFFECTS
+order: 5
+alpha: 1
+imageScale: 2
+total_frames: 3
+alwaysStartDirAtZero: true
+yOffsetAbsolute: -5
+isVisible: if self.tags(includes='burningDebuff')
+onlyWhileAlive: true
+onlyWithZoomLevelOrMore: 0.5
+frame: int((self.timeAlive()*${framesPerSec})%${frame_end-frame_start+1})+${frame_start}
+
+
+
+
+[hiddenAction_burningDebuffGone1]
+autoTrigger: if self.numberOfUnitsInTeam(greaterThan=1, withTag='monk_healer', withinRange=95) and self.tags(includes='burningDebuff')
+setUnitStats: selfRegenRate=+0.1
+temporarilyRemoveTags: burningDebuff
+[hiddenAction_burningDebuffGone2]
+autoTrigger: if self.hasParent(withTag="buddhist_temple") and self.tags(includes='burningDebuff')
+setUnitStats: selfRegenRate=+0.1
+temporarilyRemoveTags: burningDebuff
+
+
+
+[hiddenAction_goHeal]
+autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI() and self.numberOfUnitsInTeam(withTag='temple', greaterThan=0) and self.tags(includes='burningDebuff')
+clearActiveWaypoint: true
+addWaypoint_type: loadInto
+addWaypoint_maxTime: 100s
+addWaypoint_target_nearestUnit_tagged: buddhist_temple
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_nearestUnit_maxRange: 5000
+addWaypoint_target_mapMustBeReachable: true
+

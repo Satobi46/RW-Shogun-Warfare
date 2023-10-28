@@ -1,33 +1,220 @@
-### NONE - Will be used in later or futuer. ###
+### All effects are stored here. ###
 
+[effect_blood]
+attachedToUnit:false
+life:250
+physics:true
+scaleFrom:2
+scaleTo:1
+xSpeedRelativeRandom: 0.6
+ySpeedRelativeRandom: 0.6
+hSpeed:2
+image:ROOT:images\blood.png
+drawUnderUnits:false
+alpha: 1.5
+[effect_g1]
+attachedToUnit:false
+life:200
+physics:true
+scaleFrom:1
+scaleTo:1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+hSpeed:2
+image:ROOT:images\gore1.png
+drawUnderUnits:false
+alpha: 1.5
+[effect_g2]
+attachedToUnit:false
+life:200
+physics:true
+scaleFrom:1
+scaleTo:1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+hSpeed:2
+image:ROOT:images\gore2.png
+drawUnderUnits:false
+alpha: 1.5
+[effect_g3]
+attachedToUnit:false
+life:200
+physics:true
+scaleFrom:1
+scaleTo:1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+hSpeed:2
+image:ROOT:images\gore3.png
+drawUnderUnits:false
+alpha: 1.5
+[effect_g4]
+attachedToUnit:false
+life:200
+physics:true
+scaleFrom:1
+scaleTo:1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+hSpeed:2
+image:ROOT:images\gore4.png
+drawUnderUnits:false
+alpha: 1.5
+[effect_g5]
+attachedToUnit:false
+life:200
+physics:true
+scaleFrom:1
+scaleTo:1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+hSpeed:2
+image:ROOT:images\gore5.png
+drawUnderUnits:false
+alpha: 1.5
+[effect_g6]
+attachedToUnit:false
+life:200
+physics:true
+scaleFrom:1
+scaleTo:1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+hSpeed:2
+image:ROOT:images\gore6.png
+drawUnderUnits:false
+alpha: 1.5
+[effect_g7]
+attachedToUnit:false
+life:300
+physics:true
+scaleTo:0.6
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+hSpeed:2
+image:ROOT:images\gore7.png
+drawUnderUnits:false
+alpha: 1
+spawnChance: 0.3
+
+
+
+[effect_chat1]
+attachedToUnit:false
+life:150
+physics:true
+scaleFrom:0.5
+scaleTo:0.2
+yOffsetAbsolute: -3
+ySpeedAbsolute: -2
+alwayStartDirAtZero: true
+image:ROOT:images\chat1.png
+drawUnderUnits:false
+
+
+[effect_goldSpark]
+attachedToUnit: false
+life: 100
+physics: true
+physicsGravity: 0.1
+scaleFrom: 2
+scaleTo: 2
+alpha: 1
+dirOffset: 180
+dirOffsetRandom: -180
+hSpeed: 0.3
+xSpeedRelativeRandom: 0.6
+ySpeedRelativeRandom: 0.6
+image: ROOT:images\goldSpark.png
+drawUnderUnits: false
+createWhenOffscreen: false
+createWhenZoomedOut: false
+priority: low
+
+
+
+[effect_riceEffect]
+image: ROOT:images\rice1.png
+drawUnderUnits:false
+life: 150
+alpha: 1
+scaleFrom: 0.8
+fadeOut: true
+hSpeed: 1
+physics: true
+physicsGravity: 0.5
+attachedToUnit: false
+xSpeedRelativeRandom: 0.5
+ySpeedRelativeRandom: 0.5
+spawnChance: 1
+priority: low
+createWhenOffscreen: false
+createWhenZoomedOut: false
 [effect_goldCoins]
 image: ROOT:images\goldCoin.png
 attachedToUnit: false
 drawUnderUnits: false
-life: 100
-spawnChance: 1
+life: 150
 alpha: 1
-createWhenOffscreen: false
-createWhenZoomedOut: false
 alwayStartDirAtZero: true
 dirSpeed: 5
-xSpeedRelative:0.3
-ySpeedRelative:0.3
+xSpeedRelative: 0.3
+ySpeedRelative: 0.3
 physics: true
 physicsGravity: 1
 hSpeed: 3
 dirOffsetRandom: -90
 fadeOut: true
 scaleFrom: 0.7
-scaleTo: 0.7
+spawnChance: 1
 priority: low
+createWhenOffscreen: false
+createWhenZoomedOut: false
+[effect_woodDebris]
+image: ROOT:images\woodDeb1.png
+drawUnderUnits:false
+life: 120
+alpha: 1
+scaleFrom: 1
+fadeOut: true
+hSpeed: 1
+physics: true
+physicsGravity: 0.5
+attachedToUnit: false
+xSpeedRelativeRandom: 0.5
+ySpeedRelativeRandom: 0.5
+spawnChance: 1
+priority: low
+createWhenOffscreen: false
+createWhenZoomedOut: false
+
+
+
+[effect_building]
+image: ROOT:images\smoke.png
+priority:high
+drawUnderUnits:false
+life: 100
+alpha: 1
+scaleFrom: 3
+scaleTo: 0.1
+fadeOut: true
+hSpeed: 1
+physics: true
+attachedToUnit: false
+xSpeedRelativeRandom: 0.3
+ySpeedRelativeRandom: 0.3
+spawnChance: 1
+createWhenOffscreen: false
+createWhenZoomedOut: false
+
 
 
 [effect_yeetedAshigaru]
 image: ROOT:images\yeetedUnit01.png
 attachedToUnit: false
 drawUnderUnits: false
-life: 200
+life: 80
 spawnChance: 1
 alpha: 1
 createWhenOffscreen: false
@@ -40,12 +227,72 @@ physicsGravity: 1
 hSpeed: 4
 hOffsetRandom: 5
 dirOffsetRandom: -360
-fadeOut: true
+fadeOut: false
 scaleFrom: 1
 scaleTo: 1
 teamColorRatio: 1
 xSpeedRelativeRandom: 1
 ySpeedRelativeRandom: 1
+alsoEmitEffectsOnDeath: dsound02, blood*3, g1,g2,g3,g4,g5,g6
+[effect_yeeted02]
+image: ROOT:images\yeetedUnit02.png
+attachedToUnit: false
+drawUnderUnits: false
+life: 80
+spawnChance: 1
+alpha: 1
+createWhenOffscreen: false
+createWhenZoomedOut: false
+priority: high
+alwayStartDirAtZero: true
+dirSpeed: 8
+physics: true
+physicsGravity: 1
+hSpeed: 4
+hOffsetRandom: 5
+dirOffsetRandom: -360
+fadeOut: false
+scaleFrom: 1
+scaleTo: 1
+teamColorRatio: 1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+alsoEmitEffectsOnDeath: dsound02, blood*3, g1,g2,g3,g4,g5,g6
+total_frames: 6
+animateFrameStart:0
+animateFrameEnd:5
+animateFrameSpeed:0.1
+animateFramePingPong: true
+[effect_yeeted03]
+image: ROOT:images\yeetedUnit03.png
+attachedToUnit: false
+drawUnderUnits: false
+life: 80
+spawnChance: 1
+alpha: 1
+createWhenOffscreen: false
+createWhenZoomedOut: false
+priority: high
+alwayStartDirAtZero: true
+dirSpeed: 8
+physics: true
+physicsGravity: 1
+hSpeed: 4
+hOffsetRandom: 5
+dirOffsetRandom: -360
+fadeOut: false
+scaleFrom: 1
+scaleTo: 1
+teamColorRatio: 1
+xSpeedRelativeRandom: 1
+ySpeedRelativeRandom: 1
+alsoEmitEffectsOnDeath: dsound02, blood*3, g1,g2,g3,g4,g5,g6
+total_frames: 6
+animateFrameStart:0
+animateFrameEnd:5
+animateFrameSpeed:0.1
+animateFramePingPong: true
+
 
 
 [effect_bloodLustEffect]
@@ -65,6 +312,7 @@ priority: low
 alwayStartDirAtZero: false
 ySpeedRelative:0
 yOffsetRelative: -4
+
 
 
 [effect_effectSmokeLarge1]
@@ -100,6 +348,106 @@ ySpeedRelativeRandom: 0.3
 createWhenZoomedOut: false
 spawnChance: 1
 alsoPlaySound: ROOT:audio\explode\explode02.ogg: 3
+[effect_effectSmokeSmall1]
+image: ROOT:images\smokeLarge.png
+priority: high
+drawUnderUnits: false
+life: 200
+alpha: 1
+scaleFrom: 1
+scaleTo: 1
+fadeOut: true
+hSpeed: 0.2
+attachedToUnit: false
+dirOffsetRandom: 40
+dirSpeedRandom: 0.5
+createWhenZoomedOut: false
+spawnChance: 1
+[effect_smokeSmall]
+image: ROOT:images\smoke.png
+priority: high
+drawUnderUnits:false
+life: 150
+alpha: 1.3
+scaleFrom: 1
+scaleTo: 3
+fadeOut: true
+hSpeed: 0.5
+physics: true
+physicsGravity: 0
+attachedToUnit: false
+xSpeedRelativeRandom: 0.2
+ySpeedRelativeRandom: 0.2
+createWhenOffscreen: false
+createWhenZoomedOut: false
+# alsoEmitEffects: CUSTOM:smoke
+# alsoEmitEffectsOnDeath: CUSTOM:smoke
 
+
+
+[effect_effectBurning]
+image: ROOT:images\flame01.png
+priority:high
+drawUnderUnits: false
+life: 60
+alpha: 1
+scaleFrom: 1
+scaleTo: 1
+fadeOut: true
+physics: false
+attachedToUnit: false
+createWhenZoomedOut: false
+spawnChance: 1
+yOffsetRelative: -8
+total_frames: 3
+animateFrameStart:0
+animateFrameEnd:2
+animateFrameSpeed:0.1
+animateFramePingPong: false
+
+
+
+### SFX Sound Effects on Death for Infantry Units. ###
+[effect_dsound01]
+life: 0
+image: none
+spawnChance: 0.05
+alsoPlaySound: ROOT:audio\wilhelmScream.ogg
+createWhenOffscreen: false
+ifSpawnFailsEmitEffects: dsound02
+[effect_dsound02]
+life: 0
+image: none
+spawnChance: 0.05
+alsoPlaySound: ROOT:audio\pain\rps1.wav
+createWhenOffscreen: false
+ifSpawnFailsEmitEffects: dsound03
+[effect_dsound03]
+life: 0
+image: none
+spawnChance: 0.05
+alsoPlaySound: ROOT:audio\pain\rps2.wav
+createWhenOffscreen: false
+ifSpawnFailsEmitEffects: dsound04
+[effect_dsound04]
+life: 0
+image: none
+spawnChance: 0.05
+alsoPlaySound: ROOT:audio\pain\rps3.wav
+createWhenOffscreen: false
+ifSpawnFailsEmitEffects: dsound05
+[effect_dsound05]
+life: 0
+image: none
+spawnChance: 0.05
+alsoPlaySound: ROOT:audio\pain\rps4.wav
+createWhenOffscreen: false
+ifSpawnFailsEmitEffects: dsound06
+[effect_dsound06]
+life: 0
+image: none
+spawnChance: 1
+alsoPlaySound: ROOT:audio\pain\rps5.wav
+createWhenOffscreen: false
 
 

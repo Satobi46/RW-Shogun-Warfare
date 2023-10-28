@@ -1,5 +1,5 @@
 [core]
-copyFrom:ROOT:buildings.template
+copyFrom:ROOT:buildings.template, ROOT:templates\effects.template
 class:CustomUnitMetadata
 tags: camp
 name:
@@ -22,8 +22,12 @@ radius: 40
 displayRadius: 40
 isBio: false
 isBuilding: true
-generation_resources: gold=1, wood=1, rice=1
-generation_delay: 40
+
+# generation_resources: gold=1, wood=1, rice=1
+# generation_delay: 40
+
+effectOnDeath: yeeted02, yeeted03*2
+
 exit_x:0
 exit_y:-10
 
@@ -60,7 +64,8 @@ buildPriority: 2
 autoTriggerOnEvent: created
 [hiddenAction_aiExtraIncome]
 autoTrigger: if self.isControlledByAI()
-addResources: wood=+15, gold=+15, rice=+15
+addResources: wood=+8, gold=+8, rice=+8
+
 [hiddenAction_onDestroyed]
 autoTriggerOnEvent: destroyed
 spawnEffects: CUSTOM: destroyedCastle
@@ -129,6 +134,54 @@ isVisible: if self.isControlledByAI()
 name: yari_ashigaru_exp
 isVisible: if self.isControlledByAI()
 
+# [canBuild_9]
+# name: peasant_ashigaru_harvester
+# isVisible: if self.isControlledByAI()
+
+# [action_produceAiPeasantsHarvester]
+# isLocked: if numberOfUnitsInTeam(withTag="peasant_ashigaru_harvester") >= 10
+# resetCustomTimer: true ###
+# autoTrigger: if self.numberOfUnitsInTeam(withTag="peasant_ashigaru_harvester", lessThan=10) and self.self.isControlledByAI() and self.customTimer() >= 3 and self.resource(type="gold") >= 10 and self.resource(type="wood") >= 10 and self.resource(type="rice") >= 10 and numberOfUnitsInTeam(withTag="peasant") <= 10
+# guiBuildUnit: peasant_ashigaru_harvester
+# price: gold=10, rice=10, wood=10
+# addActionCooldownTime: 3s
+# buildSpeed: 3s
+# isVisible: true
+# alsoTriggerAction: producePeasantAiBuilder ###
+# alsoQueueAction: producePeasantAiHarvester
+# onlyOneUnitAtATime: true
+# allowMultipleInQueue: false
+# [action_producePeasantAiHarvester]
+# isLocked: if numberOfUnitsInTeam(withTag="peasant_ashigaru_harvester") >= 10
+# buildSpeed: 3s
+# onlyOneUnitAtATime: true
+# allowMultipleInQueue: false
+# produceUnits: peasant_ashigaru_harvester
+
+
+
+[action_produceAiPeasantsBuilder]
+isLocked: if numberOfUnitsInTeam(withTag="peasant_ashigaru_rice") >= 40
+# resetCustomTimer: true ###
+autoTrigger: if self.numberOfUnitsInTeam(withTag="peasant_ashigaru_rice", lessThan=10) and self.self.isControlledByAI() and self.customTimer() >= 3 and self.resource(type="gold") >= 10 and self.resource(type="wood") >= 10 and self.resource(type="rice") >= 10 and numberOfUnitsInTeam(withTag="peasant") <= 10
+guiBuildUnit: peasant_ashigaru
+price: gold=10, rice=10, wood=10
+addActionCooldownTime: 3s
+buildSpeed: 3s
+isVisible: true
+# alsoTriggerAction: producePeasantAiBuilder ###
+alsoQueueAction: producePeasantAiBuilder
+onlyOneUnitAtATime: true
+allowMultipleInQueue: false
+[action_producePeasantAiBuilder]
+isLocked: if numberOfUnitsInTeam(withTag="peasant_ashigaru_rice") >= 40
+buildSpeed: 3s
+onlyOneUnitAtATime: true
+allowMultipleInQueue: false
+produceUnits: peasant_ashigaru
+
+
+
 #[hiddenAction_yearCalendar] ## will be used later in game ##
 #autoTriggerOnEvent: created
 #isActive:true
@@ -143,13 +196,15 @@ isVisible: if self.isControlledByAI()
 #playSoundToPlayer: ROOT:audio\victory01.ogg: 1
 #debugMessage: [You are victorious!]
 
+
+
 [effect_destroyedCastle]
 image: ROOT:images\destroyed2.png
 priority: high
 drawUnderUnits: false
-life: 400
+life: 550
 alpha: 1
-scaleFrom: 0.3
+scaleFrom: 0.5
 scaleTo: 0.3
 fadeOut: true
 hSpeed: 0.2

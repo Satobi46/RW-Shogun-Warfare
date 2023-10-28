@@ -1,0 +1,249 @@
+[core]
+name: peasant_ashigaru_harvester
+displayDescription: - Can defend himslef and build or repair building with a Sickle. \n - Starts with wood and a pack of rice. \n - Honourable, formidable, cheap and absolute loyalty to the shogun and a rice field farmer. \n - Deals 15x damage to resource deposits. 
+
+tags: lightinfantry, infantry, peasant, peasant_ashigaru, builder, worker, harvester, peasant_ashigaru_harvester
+copyFrom:ROOT:\templates\melee.template, ROOT:\templates\infantry.template
+
+price: gold=10, rice=10, wood=10
+maxHp: 80
+mass: 300
+techLevel: 1
+buildSpeed: 3s
+radius: 10
+displayRadius: 10
+isBuilder: true
+canRepairBuildings: true
+canRepairUnits : false
+autoRepair: true
+canReclaimResources: true
+canReclaimResourcesNextSearchRange: 2000
+nanoRepairSpeed: 0.2
+nanoBuildSpeed: 1
+nanoRangeForReclaim: 5
+resourceReclaimMultiplier: 1
+nanoRangeForReclaimIsMelee: true
+nanoRangeForRepairIsMelee:true
+nanoRange: 30
+nanoRangeForRepair: 40
+# builtFrom_1_name: Takeda Camp, Otomo Camp
+# builtFrom_1_pos: 0.1
+# onNewMapSpawn: spawnPoint_eachActiveTeam
+
+ignoreInUnitCapCalculation: true
+
+[canBuild_GoldMine]
+name:goldmine
+pos: 1
+[canBuild_RiceField]
+name:ricefield
+pos: 2
+[canBuild_LumberCamp]
+name:lumbercamp
+pos: 3
+[canBuild_Barracks]
+name:warhorse_stables
+pos: 5
+[canBuild_MilitaryPort]
+name:harbour
+pos: 6
+[canBuild_sword_school]
+name:sword_school
+pos: 7
+[canBuild_archery_dojo]
+name:archery_dojo
+pos: 8
+[canBuild_siege_workshop]
+name:siege_workshop
+pos: 9
+[canBuild_jujutsu_dojo]
+name:jujutsu_dojo
+pos: 10
+[canBuild_ninjutsu_school]
+name:ninjutsu_school
+pos: 11
+[canBuild_buddhist_temple]
+name:buddhist_temple
+pos: 12
+
+
+[canBuild_ArcherTower]
+name:archertowerL1
+isLocked: if numberOfUnitsInTeam(withTag="archertowerL1") >= 10
+isLockedMessage: [Maximum Towers Built]
+pos: 4
+
+
+[hiddenAction_chatter1]
+autoTriggerOnEvent: newWaypointGivenByPlayer
+requireConditional: if self.customTimer(laterThanSeconds=5)
+spawnEffects: chat1
+resetCustomTimer: true
+
+
+[hiddenAction_goldLow]
+autoTrigger: if self.isControlledByAI() and self.resource(type='gold') < 50
+ai_isHighPriority: true
+addWaypoint_type: reclaim
+addWaypoint_target_nearestUnit_tagged: goldmine
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_randomUnit_maxRange: 2000
+addWaypoint_target_mapMustBeReachable: true
+addWaypoint_maxTime: 30s
+debugMessage: "Peasant - Action2"
+# resetCustomTimer: true
+[hiddenAction_woodLow]
+autoTrigger: if self.isControlledByAI() and self.resource(type='wood') < 50
+ai_isHighPriority: true
+addWaypoint_type: reclaim
+addWaypoint_target_nearestUnit_tagged: lumbercamp
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_randomUnit_maxRange: 2000
+addWaypoint_target_mapMustBeReachable: true
+addWaypoint_maxTime: 30s
+debugMessage: "Peasant - Action3"
+# resetCustomTimer: true
+[hiddenAction_riceLow]
+autoTrigger: if self.isControlledByAI() and self.resource(type='rice') < 50
+ai_isHighPriority: true
+addWaypoint_type: reclaim
+addWaypoint_target_nearestUnit_tagged: golden_ricefield, goldenricefield, ricefield
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_randomUnit_maxRange: 2000
+addWaypoint_target_mapMustBeReachable: true
+addWaypoint_maxTime: 30s
+debugMessage: "Peasant - Action4"
+# resetCustomTimer: true
+
+
+[hiddenAction_fullHpUnloadPeasant]
+autoTrigger: if self.hp == self.maxHp and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
+ai_isHighPriority: true
+disconnectFromParent: true
+addWaypoint_type: reclaim
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_mapMustBeReachable: true
+addWaypoint_target_nearestUnit_maxRange: 2000
+addWaypoint_target_nearestUnit_tagged: ricefield, lumbercamp, goldmine, golden_ricefield
+addWaypoint_maxTime: 100s
+	
+
+[graphics]
+total_frames: 10
+image: base.png
+image_turret: NONE
+animation_moving_start: 1
+animation_moving_end: 3
+animation_moving_speed: 2
+animation_moving_pingPong: true
+animation_idle_start: 0
+animation_idle_end: 0
+animation_idle_speed: 5
+animation_idle_pingPong: true
+animation_attack_start: 4
+animation_attack_end: 6
+animation_attack_speed: 10
+animation_attack_pingPong: true
+lock_body_rotation_with_main_turret: true
+
+repairEffectRate: 50
+repairEffect:CUSTOM:building*1
+reclaimEffectRate: 0
+reclaimEffect: none
+
+[attack]
+isMelee: true
+canAttack: true
+canAttackFlyingUnits: false
+canAttackLandUnits:   true
+canAttackUnderwaterUnits: false
+isFixedFiring: true
+turretSize: 20
+turretTurnSpeed: 0
+maxAttackRange: 8
+shootDelay: 40
+[turret_1]
+x: 0
+y: 0
+recoilOffset: -3
+recoilOutTime: 0
+recoilReturnTime: 10
+[projectile_1]
+image: projectile.png
+directDamage: 5
+life: 60
+instant: true
+mutator[multiplier]_ifUnitWithTags: goldmine, ricefield, lumbercamp, golden_ricefield, goldenricefield
+mutator[multiplier]_directDamageMultiplier: 5
+[movement]
+movementType: LAND
+moveSpeed: 1.2
+moveAccelerationSpeed: 0.09
+moveDecelerationSpeed: 0.12
+maxTurnSpeed: 40
+turnAcceleration: 1.20
+moveSlidingMode :true
+moveIgnoringBody:true
+moveSlidingDir:  181
+reverseSpeedPercentage:0
+
+[ai]
+useAsHarvester: true
+whenUsingAsHarvester_recommendedInEachBase: 35
+#lowPriorityTargetForOtherUnits:false :These are peasants! have Mercy!:
+
+
+[animation_harvest]
+onActions : reclaim
+body_0s: {frame:7}
+body_0.5s: {frame:8}
+body_0.7s: {frame:9}
+effect_0.9s: {name:CUSTOM|harvesting,x:0,y:0}
+pingPong: false
+[animation_building]
+onActions : repair
+body_0s: {frame:7}
+body_0.5s: {frame:8}
+body_0.7s: {frame:9}
+effect_0.9s: {name:CUSTOM|building,x:0,y:0}
+pingPong: false
+
+
+[effect_harvesting]
+image: smoke2.png
+priority:high
+drawUnderUnits:false
+life: 120
+alpha: 1
+scaleFrom: 1
+scaleTo: 1
+fadeOut: true
+hSpeed: 1
+physics: true
+physicsGravity: 0.5
+attachedToUnit: false
+xSpeedRelativeRandom: 0.5
+ySpeedRelativeRandom: 0.5
+spawnChance: 1
+createWhenOffscreen: false
+createWhenZoomedOut: false
+[effect_building]
+image: smoke.png
+priority:high
+drawUnderUnits:false
+life: 100
+alpha: 1
+scaleFrom: 3
+scaleTo: 0.1
+fadeOut: true
+hSpeed: 1
+physics: true
+attachedToUnit: false
+xSpeedRelativeRandom: 0.3
+ySpeedRelativeRandom: 0.3
+spawnChance: 1
+createWhenOffscreen: false
+createWhenZoomedOut: false
+
+
+

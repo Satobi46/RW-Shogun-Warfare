@@ -6,80 +6,99 @@ isBug: false
 explodeOnDeath: false
 soundOnNewSelection: ROOT:audio\click1.wav
 selfRegenRate: 0.01
-effectOnDeath: CUSTOM:dsound01, blood*3
+effectOnDeath: CUSTOM:dsound01, blood*3, g1,g2,g3,g4,g5,g6,g7
 fogOfWarSightRange: 10
 softCollisionOnAll: 1
 shieldRenderRadius: 10
 
-copyFrom: ROOT:\templates\buffs.template, ROOT:\templates\effects.template
+copyFrom: ROOT:\templates\buffs.template, ROOT:\templates\effects.template, ROOT:\templates\debuffs.template
 ignoreInUnitCapCalculation: true
 
 @memory Rank: float
 @memory infantry: float
 
-### AI ACTION GOES HERE ###
-#[action_infantry_icon]
-#pos: 0.1
-#displayType: upgrade
-#iconImage: icon.png
-#iconExtraImage: icon.png
-#isVisible: true
-#buildSpeed: 0
-#[hiddenAction_find_boat] experimental used on waterloo maps
-#autoTrigger: if self.isControlledByAI() and self.customTimer(laterThanSeconds = 20)
-#addWaypoint_target_mapMustBeReachable: true
-#addWaypoint_type: loadinto
-#addWaypoint_target_nearestUnit_tagged: ship, boat, transport
-#addWaypoint_target_nearestUnit_maxRange: 1000
-#addWaypoint_maxTime: 15s
-#debugMessage:"find transport"
-#resetCustomTimer: true
-#[hiddenAction_lvl1_unit]
-#autoTrigger: if self.kills(greaterThan=10)
-#convertTo: lvl1_unit
-#convertTo_keepCurrentTags: true
-#[hiddenAction_cantReach]
-#autoTrigger: if self.isInWater() and self.isControlledByAI()
-#addWaypoint_type: loadInto
-#addWaypoint_target_nearestUnit_team: own
-#addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
-#addWaypoint_target_nearestUnit_maxRange: 1000
-#addWaypoint_target_mapMustBeReachable: false
-#[hiddenAction_notMoving]
-#autoTrigger: if not self.isMoving() and self.isControlledByAI() and self.customTimer(laterThanSeconds=20) and not self.tags(includes='peasant')
-#addWaypoint_type: attackMove
-#addWaypoint_target_nearestUnit_team: enemy
-#addWaypoint_target_nearestUnit_tagged: infantry, lightinfantry, heavy, heavyinfantry
-#addWaypoint_target_nearestUnit_maxRange: 2500
-#addWaypoint_target_mapMustBeReachable: true
-#addWaypoint_maxTime: 60s
-#[hiddenAction_cantReach]
-#autoTrigger: if not self.hasActiveWaypoint(type='') and self.isControlledByAI()
-#addWaypoint_prepend: true
-#addWaypoint_type: loadInto
-#addWaypoint_target_nearestUnit_team: own
-#addWaypoint_target_nearestUnit_tagged: boat, heavy_bune
-#addWaypoint_target_nearestUnit_maxRange: 1000
-#addWaypoint_target_mapMustBeReachable: true
-#addWaypoint_maxTime: 30s
-#resetCustomTimer: true
-#[hiddenAction_cantReach] OLD
-#autoTrigger: if not self.isOverPassableTile() and self.isControlledByAI()
-#addWaypoint_type: loadInto
-#addWaypoint_target_nearestUnit_tagged: boat
-#addWaypoint_target_nearestUnit_maxRange: 500
-#addWaypoint_target_mapMustBeReachable: true
-#[hiddenAction_ifTargetNotReachable]
-#autoTrigger: if self.isControlledByAI() and distanceBetween(self, activeWaypointTarget) < 100 and self.isOverwater()
-#clearActiveWaypoint:true
-#addWaypoint_prepend:true
-#addWaypoint_type: loadInto
-#addWaypoint_target_nearestUnit_team: own
-#addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
-#addWaypoint_target_nearestUnit_maxRange: 1000
+
+# AI ACTION GOES HERE ###
+# [action_infantry_icon]
+# pos: 0.1
+# displayType: upgrade
+# iconImage: icon.png
+# iconExtraImage: icon.png
+# isVisible: true
+# buildSpeed: 0
+# [hiddenAction_find_boat] experimental used on waterloo maps
+# autoTrigger: if self.isControlledByAI() and self.customTimer(laterThanSeconds = 20)
+# addWaypoint_target_mapMustBeReachable: true
+# addWaypoint_type: loadinto
+# addWaypoint_target_nearestUnit_tagged: ship, boat, transport
+# addWaypoint_target_nearestUnit_maxRange: 1000
+# addWaypoint_maxTime: 15s
+# debugMessage:"find transport"
+# resetCustomTimer: true
+# [hiddenAction_lvl1_unit]
+# autoTrigger: if self.kills(greaterThan=10)
+# convertTo: lvl1_unit
+# convertTo_keepCurrentTags: true
+# [hiddenAction_cantReach]
+# autoTrigger: if self.isInWater() and self.isControlledByAI()
+# addWaypoint_type: loadInto
+# addWaypoint_target_nearestUnit_team: own
+# addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
+# addWaypoint_target_nearestUnit_maxRange: 1000
+# addWaypoint_target_mapMustBeReachable: false
+# [hiddenAction_notMoving]
+# autoTrigger: if not self.isMoving() and self.isControlledByAI() and self.customTimer(laterThanSeconds=20) and not self.tags(includes='peasant')
+# addWaypoint_type: attackMove
+# addWaypoint_target_nearestUnit_team: enemy
+# addWaypoint_target_nearestUnit_tagged: infantry, lightinfantry, heavy, heavyinfantry
+# addWaypoint_target_nearestUnit_maxRange: 2500
+# addWaypoint_target_mapMustBeReachable: true
+# addWaypoint_maxTime: 60s
+# [hiddenAction_cantReach]
+# autoTrigger: if not self.hasActiveWaypoint(type='') and self.isControlledByAI()
+# addWaypoint_prepend: true
+# addWaypoint_type: loadInto
+# addWaypoint_target_nearestUnit_team: own
+# addWaypoint_target_nearestUnit_tagged: boat, heavy_bune
+# addWaypoint_target_nearestUnit_maxRange: 1000
+# addWaypoint_target_mapMustBeReachable: true
+# addWaypoint_maxTime: 30s
+# resetCustomTimer: true
+# [hiddenAction_cantReach] OLD
+# autoTrigger: if not self.isOverPassableTile() and self.isControlledByAI()
+# addWaypoint_type: loadInto
+# addWaypoint_target_nearestUnit_tagged: boat
+# addWaypoint_target_nearestUnit_maxRange: 500
+# addWaypoint_target_mapMustBeReachable: true
+# [hiddenAction_ifTargetNotReachable]
+# autoTrigger: if self.isControlledByAI() and distanceBetween(self, activeWaypointTarget) < 100 and self.isOverwater()
+# clearActiveWaypoint:true
+# addWaypoint_prepend:true
+# addWaypoint_type: loadInto
+# addWaypoint_target_nearestUnit_team: own
+# addWaypoint_target_nearestUnit_tagged: boat, heavy_bune, heavybune, ship
+# addWaypoint_target_nearestUnit_maxRange: 1000
+# [hiddenAction_burningTrigger]
+# autoTrigger: if self.tags(includes='burningDebuff')
+# playAnimation: selfInfantryIsBurning
+# [animation_selfInfantryIsBurning]
+# effect_0.1s: {name:CUSTOM|smokeSmall,  x: 0,y: 0}
+# pingPong: true
+# [hiddenAction_unloadTemple]
+# autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
+# requireConditional: if self.isControlledByAI()
+# disconnectFromParent: true
+# resetCustomTimer: true
+# [hiddenAction_unloadTemple]
+# autoTrigger: If self.hp == self.maxHp and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
+# startUnloadingTransport: true
+# [hiddenAction_unloadTemple]
+# autoTrigger: if self.hasParent(withTag="buddhist_temple") and self.hp() == self.maxHp() and self.isControlledByAI()
+# disconnectFromParent: true
+
 
 [hiddenAction_goHeal]
-#autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1 OLD
+# autoTrigger: if self.hp(lessThan=50) and self.customTimer() >= 1 OLD
 autoTrigger: if self.hp() < self.maxHp/2 and self.isControlledByAI() and self.numberOfUnitsInTeam(withTag='temple', greaterThan=0)
 clearActiveWaypoint: true
 addWaypoint_type: loadInto
@@ -88,26 +107,28 @@ addWaypoint_target_nearestUnit_tagged: buddhist_temple
 addWaypoint_target_nearestUnit_team: own
 addWaypoint_target_nearestUnit_maxRange: 5000
 addWaypoint_target_mapMustBeReachable: true
-#debugMessage: "Hp.Low - Finding temple to heal!"
+# debugMessage: "Hp.Low - Finding temple to heal!"
 [hiddenAction_resetDirOnBuilding]
 autoTrigger: if self.hasParent(withTag="buddhist_temple")
 setBodyRotation: -90
+[hiddenAction_resetDirOnTransporting]
+autoTriggerOnEvent: enteredTransport
+requireConditional: if self.hasParent(withTag="nihonmaru")
+setBodyRotation: 180
 [hiddenAction_killedWithMissile]
-autoTrigger: if self.hp() < 1 and lastDamagedBy.tags(includes='siege')
-spawnEffects: CUSTOM:yeetedAshigaru
-#[hiddenAction_unloadTemple]
-#autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
-#requireConditional: if self.isControlledByAI()
-#disconnectFromParent: true
-#resetCustomTimer: true
-#[hiddenAction_unloadTemple]
-#autoTrigger: If self.hp == self.maxHp and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple")
-#startUnloadingTransport: true
-#[hiddenAction_unloadTemple]
-#autoTrigger: if self.hasParent(withTag="buddhist_temple") and self.hp() == self.maxHp() and self.isControlledByAI()
-#disconnectFromParent: true
+autoTrigger: if self.hp <= 0 and lastDamagedBy.tags(includes='siege')
+spawnEffects: yeetedAshigaru
 
 
+[hiddenAction_goHealIfBurning]
+autoTrigger: if self.tags(includes="burning") and self.numberOfUnitsInTeam(withTag='temple', greaterThan=0) 
+clearAllWaypoints: true
+addWaypoint_type: loadInto
+addWaypoint_maxTime: 500s
+addWaypoint_target_nearestUnit_tagged: buddhist_temple
+addWaypoint_target_nearestUnit_team: own
+addWaypoint_target_nearestUnit_maxRange: 5000
+addWaypoint_target_mapMustBeReachable: true
 [hiddenAction_killIfDefeat]
 autoTrigger: if self.numberOfUnitsInTeam(withTag='camp', lessThan=1)
 setResourcesWithLogic: hp=0
@@ -127,59 +148,32 @@ shadowOffsetY: 0
 dustEffect: true 
 movementEffectRate: 20
 drawLayer: ground
-
 showHealthBar: true
 
 ### attack ###
 [attack]
 showRangeUIGuide: true
-#meleeEngangementDistance: 100
+# meleeEngangementDistance: 100
 
-### effects ###
-[effect_blood]
-attachedToUnit:false
-life:150
-physics:true
-scaleFrom:2
-scaleTo:1
-xSpeedRelativeRandom: 0.6
-ySpeedRelativeRandom: 0.6
-hSpeed:2
-image:ROOT:images\blood.png
-drawUnderUnits:false
-alpha: 1.5
-[effect_chat1]
-attachedToUnit:false
-life:150
-physics:true
-scaleFrom:0.5
-scaleTo:0.2
-yOffsetAbsolute: -3
-ySpeedAbsolute: -2
-alwayStartDirAtZero: true
-image:ROOT:images\chat1.png
-drawUnderUnits:false
-
-
-#### >>> Level-up <<< ####
-#[attachment_slo11] ### Old Attachments of Star Decals Not Used###
-#x:-10
-#y:0
-#isVisible:true
-#isUnselectable:true
-#canAttack:false
-#canBeAttackedAndDamaged:false
-#setDrawLayerOnTop:true
-#addTransportedUnits:true
-#[attachment_slo22]
-#x:0
-#y:0
-#isVisible:true
-#isUnselectable:true
-#canAttack:false
-#canBeAttackedAndDamaged:false
-#setDrawLayerOnTop:true
-#addTransportedUnits:true
+## >>> Level-up <<< ####
+# [attachment_slo11] ### Old Attachments of Star Decals Not Used###
+# x:-10
+# y:0
+# isVisible:true
+# isUnselectable:true
+# canAttack:false
+# canBeAttackedAndDamaged:false
+# setDrawLayerOnTop:true
+# addTransportedUnits:true
+# [attachment_slo22]
+# x:0
+# y:0
+# isVisible:true
+# isUnselectable:true
+# canAttack:false
+# canBeAttackedAndDamaged:false
+# setDrawLayerOnTop:true
+# addTransportedUnits:true
 
 
 [hiddenAction_RankUp1]
@@ -189,9 +183,7 @@ autoTriggerOnEvent: killedAnyUnit
 setUnitMemory: Rank=memory.Rank+1
 requireConditional: if (self.kills() >=${killsPerRank}+memory.Rank*${killsPerRank}) and memory.Rank < ${maxRank}
 setUnitStats: armour+=3, maxHp+=5, hp+=5
-###attachments_addNewUnits: lvlup1 ### old add-attachments (do not use)###
-
-
+# attachments_addNewUnits: lvlup1 ### old add-attachments (do not use)###
 [decal_rank1]
 layer:beforeUI
 imageStack: ROOT:images\star1.png*1
@@ -244,74 +236,6 @@ isVisible: if self.kills() >=25
 onlyWhileAlive: true
 
 
-
-#### Height decal pip Healtbars by Sioxer ###
-###[decal_healthbarNinja]
-###@define maxPips: 25
-###imageStack: ROOT:images\healthBar2.png*${maxPips}
-###stack_hOffset: 0.2
-###layer: beforeUI
-###stack_indexCount: self.hp/self.maxHp*${maxPips}
-###alwaysStartDirAtZero: true
-###imageScale: 0.2
-###dirOffset: 90
-###xOffsetAbsolute: 20
-###yOffsetAbsolute: 2
-###isVisible: if self.tags(includes="ninja")
-###[decal_healthbarKatana]
-###@define maxPips: 25
-###imageStack: ROOT:images\healthBar3.png*${maxPips}
-###stack_hOffset: 0.2
-###layer: beforeUI
-###stack_indexCount: self.hp/self.maxHp*${maxPips}
-###alwaysStartDirAtZero: true
-###imageScale: 0.4
-###dirOffset: 0
-###xOffsetAbsolute: 20
-###yOffsetAbsolute: 0
-###isVisible: if self.tags(includes="katana") and not self.tags(includes="ninja")
-###[decal_healthbarYari]
-###@define maxPips: 25
-###imageStack: ROOT:images\healthBar4.png*${maxPips}
-###stack_hOffset: 0.2
-###layer: beforeUI
-###stack_indexCount: self.hp/self.maxHp*${maxPips}
-###alwaysStartDirAtZero: true
-###imageScale: 0.4
-###dirOffset: 0
-###xOffsetAbsolute: 20
-###yOffsetAbsolute: 0
-###isVisible: if self.tags(includes="spear")
-###[decal_healthbarBow]
-###@define maxPips: 25
-###imageStack: ROOT:images\healthBar5.png*${maxPips}
-###stack_hOffset: 0.2
-###layer: beforeUI
-###stack_indexCount: self.hp/self.maxHp*${maxPips}
-###alwaysStartDirAtZero: true
-###imageScale: 0.4
-###dirOffset: 0
-###xOffsetAbsolute: 20
-###yOffsetAbsolute: 0
-###isVisible: if self.tags(includes="bow") 
-
-
-
-### UNUSED CODES ###
-#setUnitStats: (Insert your stat increases here, ex. shootDelayMultiplier+=0.1, does 10% faster shooting per Rank)
-#[hiddenAction_levelup1]
-#autoTrigger: if self.kills(greaterThan=3)
-#attachments_addNewUnits: lvlup1
-#setUnitStats: armour=+5
-#[hiddenAction_levelup2]
-#autoTrigger: if self.kills(greaterThan=6)
-#attachments_addNewUnits: lvlup2
-#setUnitStats: armour=+10
-#[hiddenAction_levelup3]
-#autoTrigger: if self.kills(greaterThan=9)
-#attachments_addNewUnits: lvlup3
-#setUnitStats: armour=+15
-
 ### SHADOW WITH TEAM COLOR ###
 [decal_teamShadow]
 image: ROOT:images\teamShadow4.png
@@ -327,7 +251,6 @@ layer: shadow
 alpha: 0.5
 onlyWhileAlive: true
 onlyWithZoomLevelOrMore: 0.5
-
 [decal_selectionINF]
 image: ROOT:images\select2.png
 imageScale: 1.5
@@ -341,46 +264,69 @@ onlyWhileAlive: true
 onlyWhenSelectedByAnyPlayer:true
 
 
-### SFX Sound Effects on Death ###
-[effect_dsound01]
-life: 0
-image: none
-spawnChance: 0.05
-alsoPlaySound: ROOT:audio\wilhelmScream.ogg
-createWhenOffscreen: false
-ifSpawnFailsEmitEffects: dsound02
-[effect_dsound02]
-life: 0
-image: none
-spawnChance: 0.05
-alsoPlaySound: ROOT:audio\pain\rps1.wav
-createWhenOffscreen: false
-ifSpawnFailsEmitEffects: dsound03
-[effect_dsound03]
-life: 0
-image: none
-spawnChance: 0.05
-alsoPlaySound: ROOT:audio\pain\rps2.wav
-createWhenOffscreen: false
-ifSpawnFailsEmitEffects: dsound04
-[effect_dsound04]
-life: 0
-image: none
-spawnChance: 0.05
-alsoPlaySound: ROOT:audio\pain\rps3.wav
-createWhenOffscreen: false
-ifSpawnFailsEmitEffects: dsound05
-[effect_dsound05]
-life: 0
-image: none
-spawnChance: 0.05
-alsoPlaySound: ROOT:audio\pain\rps4.wav
-createWhenOffscreen: false
-ifSpawnFailsEmitEffects: dsound06
-[effect_dsound06]
-life: 0
-image: none
-spawnChance: 1
-alsoPlaySound: ROOT:audio\pain\rps5.wav
-createWhenOffscreen: false
+# Height decal pip Healtbars by Sioxer ###
+# [decal_healthbarNinja]
+# @define maxPips: 25
+# imageStack: ROOT:images\healthBar2.png*${maxPips}
+# stack_hOffset: 0.2
+# layer: beforeUI
+# stack_indexCount: self.hp/self.maxHp*${maxPips}
+# alwaysStartDirAtZero: true
+# imageScale: 0.2
+# dirOffset: 90
+# xOffsetAbsolute: 20
+# yOffsetAbsolute: 2
+# isVisible: if self.tags(includes="ninja")
+# [decal_healthbarKatana]
+# @define maxPips: 25
+# imageStack: ROOT:images\healthBar3.png*${maxPips}
+# stack_hOffset: 0.2
+# layer: beforeUI
+# stack_indexCount: self.hp/self.maxHp*${maxPips}
+# alwaysStartDirAtZero: true
+# imageScale: 0.4
+# dirOffset: 0
+# xOffsetAbsolute: 20
+# yOffsetAbsolute: 0
+# isVisible: if self.tags(includes="katana") and not self.tags(includes="ninja")
+# [decal_healthbarYari]
+# @define maxPips: 25
+# imageStack: ROOT:images\healthBar4.png*${maxPips}
+# stack_hOffset: 0.2
+# layer: beforeUI
+# stack_indexCount: self.hp/self.maxHp*${maxPips}
+# alwaysStartDirAtZero: true
+# imageScale: 0.4
+# dirOffset: 0
+# xOffsetAbsolute: 20
+# yOffsetAbsolute: 0
+# isVisible: if self.tags(includes="spear")
+# [decal_healthbarBow]
+# @define maxPips: 25
+# imageStack: ROOT:images\healthBar5.png*${maxPips}
+# stack_hOffset: 0.2
+# layer: beforeUI
+# stack_indexCount: self.hp/self.maxHp*${maxPips}
+# alwaysStartDirAtZero: true
+# imageScale: 0.4
+# dirOffset: 0
+# xOffsetAbsolute: 20
+# yOffsetAbsolute: 0
+# isVisible: if self.tags(includes="bow") 
+# UNUSED CODES ###
+# setUnitStats: (Insert your stat increases here, ex. shootDelayMultiplier+=0.1, does 10% faster shooting per Rank)
+# [hiddenAction_levelup1]
+# autoTrigger: if self.kills(greaterThan=3)
+# attachments_addNewUnits: lvlup1
+# setUnitStats: armour=+5
+# [hiddenAction_levelup2]
+# autoTrigger: if self.kills(greaterThan=6)
+# attachments_addNewUnits: lvlup2
+# setUnitStats: armour=+10
+# [hiddenAction_levelup3]
+# autoTrigger: if self.kills(greaterThan=9)
+# attachments_addNewUnits: lvlup3
+# setUnitStats: armour=+15
+
+
 

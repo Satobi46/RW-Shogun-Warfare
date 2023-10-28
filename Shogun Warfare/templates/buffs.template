@@ -1,13 +1,25 @@
 #ROOT:\templates\effects.template
 
-[hiddenAction_armorBuff]
-autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100) and not self.tags(includes='armorBuff')
-setUnitStats: armour+=5
-temporarilyAddTags: armorBuff
-[hiddenAction_armorBuffGone]
-autoTrigger: if self.numberOfUnitsInTeam(lessThan=1, withTag='monk_healer', withinRange=100) and self.tags(includes='armorBuff')
-setUnitStats: armour-=5
-temporarilyRemoveTags: armorBuff
+
+[hiddenAction_monkBuffActive]
+autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100) and not self.tags(includes='armorBuffMonk')
+setUnitStats: armour+=3
+temporarilyAddTags: armorBuffMonk
+[hiddenAction_monkBuffDisabled]
+autoTrigger: if self.numberOfUnitsInTeam(lessThan=1, withTag='monk_healer', withinRange=100) and self.tags(includes='armorBuffMonk')
+setUnitStats: armour-=3
+temporarilyRemoveTags: armorBuffMonk
+
+
+[hiddenAction_sashimonoBuffActive]
+autoTrigger: if self.numberOfUnitsInTeam(greaterThan=0, withTag='sashimono', withinRange=100) and not self.tags(includes='sashimonoBuff')
+setUnitStats: armour+=2
+temporarilyAddTags: sashimonoBuff
+[hiddenAction_sashimonoBuffDisabled]
+autoTrigger: if self.numberOfUnitsInTeam(lessThan=1, withTag='sashimono', withinRange=100) and self.tags(includes='sashimonoBuff')
+setUnitStats: armour-=2
+temporarilyRemoveTags: sashimonoBuff
+
 
 
 [hiddenAction_tfcSkill01Player]
@@ -37,15 +49,38 @@ setUnitStats: moveSpeed=2
 autoTrigger: if self.hp() == self.maxHp() and self.isControlledByAI() and self.hasParent(withTag="buddhist_temple") and self.tags(includes="takeda_fire_cavalry_bloodLust")
 requireConditional: if self.isControlledByAI() and self.tags(includes="takeda_fire_cavalry_bloodLust")
 disconnectFromParent: true
+
+
+
+[decal_circle]
+@copyFrom_skipThisSection: true
 [decal_decalTfcSkill1]
-layer:shadow
-imageStack: ROOT:images\skill01.png*1
+imageStack: ROOT:images\skill02.png*1
 teamColors: true
 alwaysStartDirAtZero: true
 yOffsetAbsolute: -30
-imageScale: 0.6
+imageScale: 1
 onlyWhileAlive: true
 isVisible: if self.hp() < self.maxHp/2 and self.tags(includes="takeda_fire_cavalry_bloodLust")
+[decal_monkBuffIcon]
+layer:onTop
+imageStack: ROOT:images\armorBuff5.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+onlyWhileAlive: true
+yOffsetAbsolute: 24
+imageScale: 0.5
+isVisible: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
+[decal_sashimonoBuffIcon]
+layer:onTop
+imageStack: ROOT:images\armorBuff6.png*1
+teamColors: true
+alwaysStartDirAtZero: true
+onlyWhileAlive: true
+yOffsetAbsolute: 18
+imageScale: 0.5
+isVisible: if self.numberOfUnitsInTeam(greaterThan=0, withTag='sashimono_ashigaru', withinRange=100)
+
 
 
 [effect_0]
@@ -60,16 +95,3 @@ yOffsetAbsolute: -15
 alwayStartDirAtZero: true
 image:ROOT:images\armorBuff1.png
 drawUnderUnits:false
-
-
-[decal_circle]
-@copyFrom_skipThisSection: true
-[decal_monkBuffIcon]
-layer:shadow
-imageStack: ROOT:images\armorBuff5.png*1
-teamColors: true
-alwaysStartDirAtZero: true
-onlyWhileAlive: true
-yOffsetAbsolute: 18
-imageScale: 0.5
-isVisible: if self.numberOfUnitsInTeam(greaterThan=0, withTag='monk_healer', withinRange=100)
